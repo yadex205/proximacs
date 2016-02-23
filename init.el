@@ -31,14 +31,16 @@
 
 ;;; Commentary:
 
+
 ;;; Code:
 ;; Initialize Cask
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
 ;; Init-Loader
+(require 'init-loader)
+(setq init-loader-show-log-after-init t)
 (init-loader-load "~/.emacs.d/inits")
 
 
 ;;; init.el ends here
-
