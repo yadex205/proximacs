@@ -1,0 +1,12 @@
+# Emacs
+auto-save-list/
+
+# Auto-Complete
+ac-comphist.dat
+
+# Projectile
+*.eld
+
+# Cask/Package
+.cask/
+elpa/
