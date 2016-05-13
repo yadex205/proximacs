@@ -12,6 +12,7 @@
 ;;; Helm/Projectile
 (depends-on "helm")
 (depends-on "helm-descbinds")
+(depends-on "helm-ag")
 (depends-on "projectile")
 (depends-on "helm-projectile")
 (depends-on "sr-speedbar")

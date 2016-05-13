@@ -1,4 +1,4 @@
-;;; 43-markdown.el --- My init script for markdown-mode
+;;; 40_markdown.el --- My init script for markdown-mode
 
 ;;; Commentary:
 
@@ -7,4 +7,4 @@
 (require 'markdown-mode)
 (setq markdown-command "markdown")
 
-;;; 43-markdown.el ends here
+;;; 40_markdown.el ends here

@@ -1,4 +1,4 @@
-;;; 40-ruby.el --- My init script for ruby
+;;; 40_ruby.el --- My init script for ruby
 
 ;;; Commentary:
 
@@ -91,4 +91,4 @@ See URL `http://batsov.com/rubocop/'."
          (yard-mode)
 	     ))
 
-;;; 40-ruby.el ends here
+;;; 40_ruby.el ends here

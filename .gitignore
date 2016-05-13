@@ -1,6 +1,8 @@
 # Emacs
 auto-save-list/
 \#*\#
+.\#*
+*~
 
 # Auto-Complete
 ac-comphist.dat
@@ -11,7 +13,6 @@ ac-comphist.dat
 # Cask/Package
 .cask/
 elpa/
-.\#Cask
 
 # misc
 places

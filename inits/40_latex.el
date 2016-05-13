@@ -1,4 +1,4 @@
-;;; 42-tex.el --- My init script for tex writing
+;;; 40_latex.el --- My init script for tex writing
 
 ;;; Commentary:
 
@@ -17,4 +17,4 @@
 (setq YaTeX-kanji-code nil)
 (setq YaTeX-use-LaTeX2e t)
 
-;;; 42-tex.el ends here
+;;; 40_latex.el ends here

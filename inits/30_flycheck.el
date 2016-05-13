@@ -1,4 +1,4 @@
-;;; 31-flycheck.el --- My init script for flycheck
+;;; 30_flycheck.el --- My init script for flycheck
 
 ;;; Commentary:
 
@@ -14,4 +14,4 @@
 			     (flycheck-status-emoji-mode t)
 			     ))
 (add-hook 'flycheck-mode-hook #'flycheck-cask-setup)
-;;; 31-flycheck.el ends here
+;;; 30_flycheck.el ends here

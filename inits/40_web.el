@@ -1,4 +1,4 @@
-;;; 41-web.el --- My init script for web coding
+;;; 40_web.el --- My init script for web coding
 
 ;;; Commentary:
 
@@ -17,4 +17,4 @@
       (append '(("\\.js$" . js2-mode)
 		("\\.json$" . json-mode)) auto-mode-alist))
 
-;;; 41-web.el ends here
+;;; 40_web.el ends here
