@@ -5,6 +5,7 @@
 ;;; Code:
 
 (require 'markdown-mode)
-(setq markdown-command "markdown")
 
+;; Set markdown executable
+(setq markdown-command "markdown")
 ;;; 40_markdown.el ends here

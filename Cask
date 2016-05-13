@@ -9,6 +9,9 @@
 (depends-on "monokai-theme")
 (depends-on "nlinum")
 
+;;; Japanese Input Method
+(depends-on "ddskk")
+
 ;;; Helm/Projectile
 (depends-on "helm")
 (depends-on "helm-descbinds")
@@ -27,6 +30,7 @@
 (depends-on "mwim")
 
 ;;; Coding helper
+(depends-on "migemo")
 (depends-on "auto-complete")
 (depends-on "popup")
 (depends-on "fuzzy")
@@ -54,9 +58,13 @@
 (depends-on "scss-mode")
 (depends-on "js2-mode")
 (depends-on "json-mode")
+(depends-on "tern")
+(depends-on "tern-auto-complete")
+
+;;;; Markdown
+(depends-on "markdown-mode")
 
 ;;;; Other text
-(depends-on "markdown-mode")
 (depends-on "yaml-mode")
 (depends-on "haskell-mode")
 (depends-on "flycheck-haskell")

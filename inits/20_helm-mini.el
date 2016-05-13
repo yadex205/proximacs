@@ -7,9 +7,6 @@
 (require 'helm-mode)
 (require 'helm-config)
 
-;(defadvice helm-buffers-sort-transformer (around ignore activate)
-                                        ;(setq ad-return-value (ad-get-arg 0)))
-
 ;; A helm source for emacs commands
 (defvar helm-source-emacs-commands
   (helm-build-sync-source "Emacs commands"
@@ -34,6 +31,7 @@
 			  :action #'command-execute)
   "A simple helm source for Emacs commands history.")
 
+;; Set helm-mini sources
 (custom-set-variables
  '(helm-mini-default-sources
    '(helm-source-buffers-list

@@ -19,9 +19,17 @@
 (define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
 (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
 
+;; Prevent from creating new buffer when push TAB twice
+;; Reference: http://d.hatena.ne.jp/a_bicky/20140104/1388822688
+(defadvice helm-ff-kill-or-find-buffer-fname (around execute-only-if-exist activate)
+  "Execute command only if CANDIDATE exists."
+  (when (file-exists-p candidate)
+    ad-do-it))
+
 ;; Override default emacs actions by helm
 (define-key global-map (kbd "C-x C-f") 'helm-find-files)
 (define-key global-map (kbd "C-x b") 'helm-buffers-list)
 (define-key global-map (kbd "M-x") 'helm-M-x)
+(define-key global-map (kbd "C-c i") 'helm-imenu)
 
 ;;; 20_helm-keybinds.el ends here
