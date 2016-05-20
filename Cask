@@ -69,6 +69,9 @@
 (depends-on "robe")
 (depends-on "projectile-rails")
 
+;; R language
+(depends-on "ess")
+
 ;; Web/JavaScript/Node.js
 (depends-on "web-mode")
 (depends-on "emmet-mode")
