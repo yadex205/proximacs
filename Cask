@@ -1,18 +1,30 @@
+;;;; 0. Package sources
 (source gnu)
 (source melpa)
 
-;; Dependencies
-;;; Package/Init
+
+
+;;;; 1. Editor Environment
+
+;; Initscript
 (depends-on "init-loader")
 
-;;; Appearance
+;; Appearance
 (depends-on "monokai-theme")
 (depends-on "nlinum")
 
-;;; Japanese Input Method
+;; Japanese language support
 (depends-on "ddskk")
+(depends-on "migemo")
 
-;;; Helm/Projectile
+;; Text search
+(depends-on "anzu")
+
+
+
+;;;; 2. Project Management
+
+;; Helm/Projectile
 (depends-on "helm")
 (depends-on "helm-descbinds")
 (depends-on "helm-ag")
@@ -21,28 +33,34 @@
 (depends-on "sr-speedbar")
 (depends-on "projectile-speedbar")
 
-;;; Git
+;; Git
 (depends-on "magit")
 (depends-on "gitignore-mode")
 
 
-;;; Text editing
+
+;;;; 3. Coding support
+
+;; Cursor moving
 (depends-on "mwim")
 
-;;; Coding helper
-(depends-on "migemo")
+;; Code prediction
 (depends-on "auto-complete")
 (depends-on "popup")
 (depends-on "fuzzy")
-(depends-on "anzu")
+
+;; Linting
 (depends-on "flycheck")
 (depends-on "flycheck-tip")
 (depends-on "flycheck-status-emoji")
 (depends-on "flycheck-cask")
 (depends-on "helm-flycheck")
 
-;;; File-Type helper
-;;;; Ruby/Rails/RSpec
+
+
+;;;; 4. Package for languages
+
+;; Ruby/Rails
 (depends-on "ruby-end")
 (depends-on "yard-mode")
 (depends-on "ruby-block")
@@ -51,7 +69,7 @@
 (depends-on "robe")
 (depends-on "projectile-rails")
 
-;;;; Web/JavaScript/NodeJS
+;; Web/JavaScript/Node.js
 (depends-on "web-mode")
 (depends-on "emmet-mode")
 (depends-on "sass-mode")
@@ -61,7 +79,7 @@
 (depends-on "tern")
 (depends-on "tern-auto-complete")
 
-;;;; Markdown
+;; Markdown
 (depends-on "markdown-mode")
 
 ;;;; Other text
