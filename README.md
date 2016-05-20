@@ -19,6 +19,7 @@ Requirement
 ### Language support
 #### Ruby
 - `rubocop`
+- `pry`
 
 #### Web/Node.js
 - `tern`
