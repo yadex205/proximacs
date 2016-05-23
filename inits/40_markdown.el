@@ -7,5 +7,5 @@
 (require 'markdown-mode)
 
 ;; Set markdown executable
-(setq markdown-command "markdown")
+(setq markdown-command "pandoc -f markdown")
 ;;; 40_markdown.el ends here
