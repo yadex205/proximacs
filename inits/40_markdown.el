@@ -7,5 +7,5 @@
 (require 'markdown-mode)
 
 ;; Set markdown executable
-(setq markdown-command "pandoc -f markdown")
+(setq markdown-command "pandoc -f markdown_github -s --self-contained -t html5 -c ~/.pandoc/github.css")
 ;;; 40_markdown.el ends here
