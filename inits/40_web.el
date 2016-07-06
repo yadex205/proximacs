@@ -33,6 +33,7 @@
       (append '(
                 ("\\.js$" . js2-mode)
                 ("\\.json$" . json-mode)
+                ("\\.ejs$" . html-mode)
                 ) auto-mode-alist))
 
 ;;; 40_web.el ends here
