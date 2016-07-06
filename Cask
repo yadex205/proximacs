@@ -20,6 +20,9 @@
 ;; Text search
 (depends-on "anzu")
 
+;; Window/Buffer
+(depends-on "popwin")
+
 
 
 ;;;; 2. Project Management
