@@ -59,6 +59,9 @@
 (depends-on "flycheck-cask")
 (depends-on "helm-flycheck")
 
+;; Run snippet
+(depends-on "quickrun")
+
 
 
 ;;;; 4. Package for languages
@@ -84,6 +87,16 @@
 (depends-on "json-mode")
 (depends-on "tern")
 (depends-on "tern-auto-complete")
+
+;; Elixir
+(depends-on "elixir-mode")
+(depends-on "alchemist")
+(depends-on "ac-alchemist")
+
+;; Rust
+(depends-on "rust-mode")
+(depends-on "flycheck-rust")
+(depends-on "ac-racer")
 
 ;; Markdown
 (depends-on "markdown-mode")
