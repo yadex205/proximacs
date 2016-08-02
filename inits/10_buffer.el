@@ -15,4 +15,6 @@
 
 (global-whitespace-mode t)
 
+(setq whitespace-action '(auto-cleanup))
+
 ;;; 10_buffer.el ends here
