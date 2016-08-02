@@ -4,12 +4,10 @@
 
 ;;; Code:
 
-(require 'web-mode)
-(require 'emmet-mode)
-(require 'sgml-mode)
-(require 'js2-mode)
-(require 'tern)
-(require 'tern-auto-complete)
+;; Automatical load
+
+(autoload 'web-mode "web-mode" nil t)
+(autoload 'js2-mode "js2-mode" nil t)
 
 ;; Start web-mode/emmet-mode when sgmi/html mode started
 (add-hook 'sgml-mode-hook 'web-mode)
@@ -24,11 +22,6 @@
 ;; Emmet customization
 (setq emmet-move-cursor-between-quotes t)
 
-;; Setup tern
-(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-(tern-ac-setup)
-
-;; Automatical load
 (setq auto-mode-alist
       (append '(
                 ("\\.js$" . js2-mode)

@@ -15,10 +15,6 @@
 (require 'nlinum)
 (global-nlinum-mode t)
 
-;; Show current line/column number on mode line
-(line-number-mode t)
-(column-number-mode t)
-
 ;; Emphasis parens
 (show-paren-mode t)
 

@@ -4,10 +4,10 @@
 
 ;;; Code:
 
-(require 'skk)
+;; (require 'skk)
 
-;; Set default Input method as ssk
-(setq default-input-method "japanese-skk")
+;;;; Set default Input method as ssk
+;; (setq default-input-method "japanese-skk")
 
 ;; Setup migemo
 ;; Reference: http://qiita.com/catatsuy/items/c5fa34ead92d496b8a51

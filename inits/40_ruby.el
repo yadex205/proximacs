@@ -44,13 +44,6 @@
 (ruby-block-mode t)
 (setq ruby-block-highlight-toggle t)
 
-;;; Robe for auto-completing
-(require 'robe)
-(add-hook 'ruby-mode-hook 'robe-mode)
-(autoload 'robe-mode "robe" "Code navigation, documentation lookup and completion for Ruby" t nil)
-(autoload 'ac-robe-setup "ac-robe" "auto-complete robe" nil nil)
-(add-hook 'robe-mode-hook 'ac-robe-setup)
-
 ;;; disable ruby-lint
 (require 'flycheck)
 

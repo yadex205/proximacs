@@ -7,11 +7,12 @@
 ;;; Code:
 
 ;; Setup silver search behavior
-(require 'helm-ag)
-(setq helm-ag-base-command "ag --nocolor --nogrou")
 
-;; Set keybind for helm-ag
-(global-set-key (kbd "C-c s") 'helm-do-ag)
-(global-set-key (kbd "C-c S") 'helm-do-ag-project-root)
+(add-hook 'helm-mode-hook
+          (lambda ()
+            (setq helm-ag-base-command "ag --nocolor --nogrou")
+            ;; Set keybind for helm-ag
+            (global-set-key (kbd "C-c s") 'helm-do-ag)
+            (global-set-key (kbd "C-c S") 'helm-do-ag-project-root)))
 
 ;;; 20_helm-ag.el ends here
