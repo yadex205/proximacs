@@ -19,7 +19,7 @@
 ;; disable auto backup/save/add-new-line
 (setq backup-inhibited t)
 (setq make-backup-files nil)
-(setq next-line-add-newlines nil)
+;; (setq next-line-add-newlines nil)
 
 ;; extra keybinds
 (define-key esc-map "p" 'scroll-down)

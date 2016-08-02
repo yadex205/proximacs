@@ -17,4 +17,8 @@
 
 (setq whitespace-action '(auto-cleanup))
 
+;; Add newline at last
+(setq mode-require-final-newline t)
+(setq require-final-newline t)
+
 ;;; 10_buffer.el ends here
