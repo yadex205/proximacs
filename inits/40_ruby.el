@@ -13,6 +13,8 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 
+;; Disable to insert magic comment (utf-8)
+(setq ruby-insert-encoding-magic-comment nil)
 
 ;; improve ruby-mode indent behavior
 (setq ruby-deep-indent-paren-style nil)
@@ -84,5 +86,10 @@ See URL `http://batsov.com/rubocop/'."
 	     (setq flycheck-checker 'ruby-rubocop-nolint)
          (yard-mode)
 	     ))
+
+;; haml-mode
+
+(require 'haml-mode)
+(add-to-list 'auto-mode-alist '("\\.haml$" . haml-mode))
 
 ;;; 40_ruby.el ends here

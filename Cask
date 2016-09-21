@@ -74,6 +74,7 @@
 (depends-on "inf-ruby")
 (depends-on "robe")
 (depends-on "projectile-rails")
+(depends-on "haml-mode")
 
 ;; R language
 (depends-on "ess")
@@ -87,6 +88,9 @@
 (depends-on "json-mode")
 (depends-on "tern")
 (depends-on "tern-auto-complete")
+
+;; Coffee script
+(depends-on "coffee-mode")
 
 ;; Elixir
 (depends-on "elixir-mode")
