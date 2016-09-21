@@ -30,13 +30,10 @@
 (add-hook 'json-mode-hook (lambda () (setq js-indent-level 2)))
 
 
-(setq auto-mode-alist
-      (append '(
-                ("\\.js$" . js2-mode)
-                ("\\.json$" . json-mode)
-                ("\\.ejs$" . html-mode)
-                ("\\.coffee$" . coffee-mode)
-                ("\\.scss$" . scss-mode)
-                ) auto-mode-alist))
+(add-to-list 'auto-mode-alist (append '("\\.js$" . js2-mode)))
+(add-to-list 'auto-mode-alist (append '("\\.json$" . json-mode)))
+(add-to-list 'auto-mode-alist (append '("\\.ejs$" . html-mode)))
+(add-to-list 'auto-mode-alist (append '("\\.coffee$" . coffee-mode)))
+(add-to-list 'auto-mode-alist (append '("\\.scss$" . scss-mode)))
 
 ;;; 40_web.el ends here

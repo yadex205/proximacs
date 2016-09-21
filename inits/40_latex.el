@@ -8,8 +8,7 @@
 
 ;; Autoload yatex mode for following extensions
 (autoload 'yatex-mode "Yatex" "Yet Another LaTeX mode" t)
-(setq auto-mode-alist
-      (append '(("\\.tex$" . yatex-mode) auto-mode-alist)))
+(add-to-list 'auto-mode-alist (append '("\\.tex$" . yatex-mode)))
 
 ;; Avoid keybind confliction with tmux
 (setq YaTeX-inhibit-prefix-letter t)
