@@ -32,8 +32,6 @@
 (depends-on "helm-ag")
 (depends-on "projectile")
 (depends-on "helm-projectile")
-(depends-on "sr-speedbar")
-(depends-on "projectile-speedbar")
 
 ;; Git
 (depends-on "magit")
