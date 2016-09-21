@@ -21,7 +21,6 @@ Requirement
 - `pry`
 
 #### Web/Node.js
-- `tern`
 - `eslint`
 
 
