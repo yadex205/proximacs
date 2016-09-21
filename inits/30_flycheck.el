@@ -6,9 +6,7 @@
 
 ;; Flyckeck global
 (require 'flycheck)
-(require 'flycheck-tip)
 
-(flycheck-tip-use-timer 'verbose)
 (add-hook 'after-init-hook ( lambda ()
 			     (global-flycheck-mode 1)
 			     (flycheck-status-emoji-mode t)

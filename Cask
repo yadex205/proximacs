@@ -51,7 +51,6 @@
 
 ;; Linting
 (depends-on "flycheck")
-(depends-on "flycheck-tip")
 (depends-on "flycheck-status-emoji")
 (depends-on "flycheck-cask")
 (depends-on "helm-flycheck")
