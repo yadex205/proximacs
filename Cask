@@ -97,11 +97,6 @@
 (depends-on "alchemist")
 (depends-on "ac-alchemist")
 
-;; Rust
-(depends-on "rust-mode")
-(depends-on "flycheck-rust")
-(depends-on "ac-racer")
-
 ;; Markdown
 (depends-on "markdown-mode")
 
