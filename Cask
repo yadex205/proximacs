@@ -92,11 +92,6 @@
 ;; Coffee script
 (depends-on "coffee-mode")
 
-;; Elixir
-(depends-on "elixir-mode")
-(depends-on "alchemist")
-(depends-on "ac-alchemist")
-
 ;; Markdown
 (depends-on "markdown-mode")
 
