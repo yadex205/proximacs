@@ -15,7 +15,6 @@
 
 ;; Japanese language support
 (depends-on "ddskk")
-(depends-on "migemo")
 
 ;; Text search
 (depends-on "anzu")

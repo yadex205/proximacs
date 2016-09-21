@@ -14,7 +14,6 @@ Requirement
 
 ### Utilities
 - `ag` (The Silver Searcher)
-- `cmigemo` (Migemo)
 
 ### Language support
 #### Ruby
@@ -30,10 +29,10 @@ Setup
 ---
 
 ```bash
-$ cd ~  
-$ rm -rf .emacs.d  
-$ git clone https://github.com/yadex205/.emacs.d.git  
-$ cd .emacs.d  
+$ cd ~
+$ rm -rf .emacs.d
+$ git clone https://github.com/yadex205/.emacs.d.git
+$ cd .emacs.d
 $ cask install
 ```
 

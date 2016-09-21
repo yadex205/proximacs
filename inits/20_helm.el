@@ -16,10 +16,6 @@
 
                  (helm-descbinds-mode +1)
 
-                 ;; Turn on helm-migemo-mode for incremental search Japanese characrers by roma-ji
-                 (require 'migemo)
-                 (helm-migemo-mode t)
-
                  ;; Disable helm auto update
                  (setq helm-ff-auto-update-initial-value nil)
 
