@@ -55,10 +55,6 @@
 (depends-on "flycheck-cask")
 (depends-on "helm-flycheck")
 
-;; Run snippet
-(depends-on "quickrun")
-
-
 
 ;;;; 4. Package for languages
 
