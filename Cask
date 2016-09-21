@@ -76,9 +76,6 @@
 (depends-on "projectile-rails")
 (depends-on "haml-mode")
 
-;; R language
-(depends-on "ess")
-
 ;; Web/JavaScript/Node.js
 (depends-on "web-mode")
 (depends-on "emmet-mode")
