@@ -4,16 +4,14 @@
 
 ;;; Code:
 
-(require 'helm-mode)
+(require 'helm-config)
 
 ;; Turn on helm-mode/helm-descbinds-mode
 (helm-mode +1)
 
 (add-hook 'helm-mode-hook
           (lambda ()
-                 (require 'helm-config)
                  (require 'helm-descbinds)
-
                  (helm-descbinds-mode +1)
 
                  ;; Disable helm auto update
