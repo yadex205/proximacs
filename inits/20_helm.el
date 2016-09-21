@@ -19,12 +19,6 @@
                  ;; Disable helm auto update
                  (setq helm-ff-auto-update-initial-value nil)
 
-                 ;; Disable helm sorting
-                 ;; Reference: http://rubikitch.com/tag/helm-buffers-sort-transformer/
-                 (defadvice helm-buffers-sort-transformer (around ignore activate)
-                   "Disable helm-buffers-sort-transformer."
-                   (setq ad-return-value (ad-get-arg 0)))
-
                  ;; Unknown
                  (setq helm-delete-minibuffer-contents-from-point t)
                  (delete '(find-file) helm-completing-read-handlers-alist)
