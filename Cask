@@ -87,6 +87,4 @@
 
 ;;;; Other text
 (depends-on "yaml-mode")
-(depends-on "haskell-mode")
-(depends-on "flycheck-haskell")
 (depends-on "yatex")
