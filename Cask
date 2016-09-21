@@ -53,7 +53,6 @@
 (depends-on "flycheck")
 (depends-on "flycheck-status-emoji")
 (depends-on "flycheck-cask")
-(depends-on "helm-flycheck")
 
 
 ;;;; 4. Package for languages
