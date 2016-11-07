@@ -83,3 +83,4 @@
 ;;;; Other text
 (depends-on "yaml-mode")
 (depends-on "yatex")
+(depends-on "csv-mode")
