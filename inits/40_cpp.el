@@ -13,9 +13,8 @@
             (setq flycheck-clang-include-path
                   (list
                    (expand-file-name "~/.nvm/versions/node/v6.3.1/include/node/")
-                   (expand-file-name "~/Qt/5.7/clang_64/lib/QtWidgets.framework/Headers/")
-                   (expand-file-name "~/Qt/5.7/clang_64/lib/QtGui.framework/Headers/")
-                   (expand-file-name "~/Qt/5.7/clang_64/lib/QtCore.framework/Headers/")))))
+                   (expand-file-name "/usr/local/opt/qt5/include")))
+            (setq flycheck-clang-language-standard "c++11")))
 
 (defun setup-flycheck-clang-project-path ()
   (let ((root (ignore-errors (projectile-project-root))))
