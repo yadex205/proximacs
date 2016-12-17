@@ -13,6 +13,9 @@
 (add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 
+;; Keybind
+(define-key ruby-mode-map (kbd "C-c r") 'rspec-find-spec-or-target-other-window)
+
 ;; Disable to insert magic comment (utf-8)
 (setq ruby-insert-encoding-magic-comment nil)
 
