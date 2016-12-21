@@ -27,7 +27,7 @@
 (add-hook 'coffee-mode-hook (lambda () (setq coffee-tab-width 2)))
 
 ;; Json mode setup
-(add-hook 'json-mode-hook (lambda () (setq js-indent-level 2)))
+(add-hook 'json-mode-hook (lambda () (setq js-indent-level 4)))
 
 
 (add-to-list 'auto-mode-alist (append '("\\.js$" . js2-mode)))
