@@ -17,6 +17,7 @@ elpa/
 # misc
 places
 recentf
+/eshell
 
 # Mac
 .DS_Store
