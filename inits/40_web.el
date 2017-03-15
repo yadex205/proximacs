@@ -8,6 +8,7 @@
 
 (autoload 'web-mode "web-mode" nil t)
 (autoload 'js2-mode "js2-mode" nil t)
+(require 'json-reformat)
 
 ;; Start web-mode/emmet-mode when sgmi/html mode started
 (add-hook 'sgml-mode-hook 'web-mode)
@@ -27,7 +28,15 @@
 (add-hook 'coffee-mode-hook (lambda () (setq coffee-tab-width 2)))
 
 ;; Json mode setup
-(add-hook 'json-mode-hook (lambda () (setq js-indent-level 4)))
+;; reference: http://stackoverflow.com/questions/17901900/how-can-i-set-a-tab-width-for-json-files
+(add-hook 'json-mode-hook
+          (lambda ()
+            (setq json-reformat:indent-width 2)
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)
+            ))
+
+(add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 4)))
 
 
 (add-to-list 'auto-mode-alist (append '("\\.js$" . js2-mode)))
