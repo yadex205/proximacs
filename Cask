@@ -84,3 +84,4 @@
 (depends-on "yaml-mode")
 (depends-on "yatex")
 (depends-on "csv-mode")
+(depends-on "graphviz-dot-mode")

@@ -54,3 +54,20 @@
 
 
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(helm-mini-default-sources
+   (quote
+    (helm-source-buffers-list helm-source-recentf helm-source-files-in-current-dir helm-source-emacs-commands-history helm-source-emacs-commands)))
+ '(package-selected-packages
+   (quote
+    (yatex yard-mode yaml-mode web-mode scss-mode sass-mode ruby-end ruby-block rspec-mode projectile-rails popwin nlinum mwim monokai-theme markdown-mode magit json-mode js2-mode init-loader helm-projectile helm-descbinds helm-ag gitignore-mode fuzzy flycheck-status-emoji flycheck-cask emmet-mode ddskk csv-mode coffee-mode auto-complete anzu))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
