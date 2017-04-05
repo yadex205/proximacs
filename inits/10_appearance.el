@@ -25,4 +25,7 @@
 ;; Disable waste UIs
 (menu-bar-mode 0)
 
+;; Show fullpath on headerline
+(path-headerline-mode +1)
+
 ;;; 10_appearance.el ends here

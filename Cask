@@ -12,6 +12,7 @@
 ;; Appearance
 (depends-on "monokai-theme")
 (depends-on "nlinum")
+(depends-on "path-headerline-mode")
 
 ;; Japanese language support
 (depends-on "ddskk")

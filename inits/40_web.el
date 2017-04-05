@@ -9,6 +9,7 @@
 (autoload 'web-mode "web-mode" nil t)
 (autoload 'js2-mode "js2-mode" nil t)
 (require 'json-reformat)
+(require 'flymake)
 
 ;; Start web-mode/emmet-mode when sgmi/html mode started
 (add-hook 'sgml-mode-hook 'web-mode)
@@ -16,6 +17,9 @@
 
 ;; Sass/Scss hook
 (add-hook 'css-mode-hook 'emmet-mode)
+(add-hook 'scss-mode-hook
+          (lambda ()
+            (delete '(".+\\.scss$" flymake-scss-init) flymake-allowed-file-name-masks)))
 
 ;; Set Indent for each mode
 (add-hook 'web-mode-hook (lambda () (setq web-mode-markup-indent-offset 2)))
