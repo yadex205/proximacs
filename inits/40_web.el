@@ -14,6 +14,7 @@
 ;; Start web-mode/emmet-mode when sgmi/html mode started
 (add-hook 'sgml-mode-hook 'web-mode)
 (add-hook 'html-mode-hook 'emmet-mode)
+(add-hook 'web-mode-hook 'emmet-mode)
 
 ;; Sass/Scss hook
 (add-hook 'css-mode-hook 'emmet-mode)
@@ -48,5 +49,6 @@
 (add-to-list 'auto-mode-alist (append '("\\.ejs$" . html-mode)))
 (add-to-list 'auto-mode-alist (append '("\\.coffee$" . coffee-mode)))
 (add-to-list 'auto-mode-alist (append '("\\.scss$" . scss-mode)))
+(add-to-list 'auto-mode-alist (append '("\\.php$" . web-mode)))
 
 ;;; 40_web.el ends here
