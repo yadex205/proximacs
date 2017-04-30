@@ -10,6 +10,7 @@
 (autoload 'js2-mode "js2-mode" nil t)
 (require 'json-reformat)
 (require 'flymake)
+(require 'flycheck)
 
 ;; Start web-mode/emmet-mode when sgmi/html mode started
 (add-hook 'sgml-mode-hook 'web-mode)
@@ -20,7 +21,8 @@
 (add-hook 'css-mode-hook 'emmet-mode)
 (add-hook 'scss-mode-hook
           (lambda ()
-            (delete '(".+\\.scss$" flymake-scss-init) flymake-allowed-file-name-masks)))
+            (delete '(".+\\.scss$" flymake-scss-init) flymake-allowed-file-name-masks)
+            (setq flycheck-checker 'sass/scss-sass-lint)))
 
 ;; Set Indent for each mode
 (add-hook 'web-mode-hook (lambda () (setq web-mode-markup-indent-offset 2)))
@@ -43,12 +45,11 @@
 
 (add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 4)))
 
-
 (add-to-list 'auto-mode-alist (append '("\\.js$" . js2-mode)))
 (add-to-list 'auto-mode-alist (append '("\\.json$" . json-mode)))
 (add-to-list 'auto-mode-alist (append '("\\.ejs$" . html-mode)))
 (add-to-list 'auto-mode-alist (append '("\\.coffee$" . coffee-mode)))
 (add-to-list 'auto-mode-alist (append '("\\.scss$" . scss-mode)))
-(add-to-list 'auto-mode-alist (append '("\\.php$" . web-mode)))
+(add-to-list 'auto-mode-alist (append '("\\.php$" . php-mode)))
 
 ;;; 40_web.el ends here

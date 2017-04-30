@@ -20,18 +20,20 @@
 (setq ruby-insert-encoding-magic-comment nil)
 
 ;; improve ruby-mode indent behavior
-(setq ruby-deep-indent-paren-style nil)
+;;; (setq ruby-use-smie nil)
+;;; (setq ruby-deep-indent-paren-style nil)
+
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
   (let ((column (current-column))
-	indent offset)
+        indent offset)
     (save-excursion
       (back-to-indentation)
       (let ((state (syntax-ppss)))
-	(setq offset (- column (current-column)))
-	(when (and (eq (char-after) ?\))
-		   (not (zerop (car state))))
-	  (goto-char (cadr state))
-	  (setq indent (current-indentation)))))
+        (setq offset (- column (current-column)))
+        (when (and (eq (char-after) ?\))
+                   (not (zerop (car state))))
+          (goto-char (cadr state))
+          (setq indent (current-indentation)))))
     (when indent
       (indent-line-to indent)
       (when (> offset 0) (forward-char offset)))))
@@ -39,11 +41,11 @@
 ;; ruby-end
 (require 'ruby-end)
 (add-hook 'ruby-mode-hook
-	  '(lambda ()
-	     (abbrev-mode 1)
-	     (electric-pair-mode t)
-	     (electric-indent-mode t)
-	     (electric-layout-mode t)))
+          '(lambda ()
+            (abbrev-mode 1)
+            (electric-pair-mode t)
+            (electric-indent-mode t)
+            (electric-layout-mode t)))
 
 (require 'ruby-block)
 (ruby-block-mode t)
@@ -85,10 +87,10 @@ See URL `http://batsov.com/rubocop/'."
 
 
 (add-hook 'ruby-mode-hook
-	  '(lambda ()
-	     (setq flycheck-checker 'ruby-rubocop-nolint)
-         (yard-mode)
-	     ))
+          '(lambda ()
+             (setq flycheck-checker 'ruby-rubocop-nolint)
+             (yard-mode)
+             ))
 
 ;; haml-mode
 

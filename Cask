@@ -74,6 +74,7 @@
 (depends-on "scss-mode")
 (depends-on "js2-mode")
 (depends-on "json-mode")
+(depends-on "php-mode")
 
 ;; Coffee script
 (depends-on "coffee-mode")
