@@ -24,8 +24,7 @@
 ;;; (setq ruby-deep-indent-paren-style nil)
 
 (defadvice ruby-indent-line (after unindent-closing-paren activate)
-  (let ((column (current-column))
-        indent offset)
+  (let ((column (current-column)) indent offset)
     (save-excursion
       (back-to-indentation)
       (let ((state (syntax-ppss)))

@@ -43,7 +43,7 @@
             (setq js-indent-level 2)
             ))
 
-(add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 4)))
+(add-hook 'js2-mode-hook (lambda () (setq js2-basic-offset 2)))
 
 (add-to-list 'auto-mode-alist (append '("\\.js$" . js2-mode)))
 (add-to-list 'auto-mode-alist (append '("\\.json$" . json-mode)))
