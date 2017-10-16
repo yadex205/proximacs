@@ -21,4 +21,6 @@
 (setq mode-require-final-newline t)
 (setq require-final-newline t)
 
+(global-set-key "\C-xp" (lambda () (interactive) (other-window -1)))
+
 ;;; 10_buffer.el ends here
