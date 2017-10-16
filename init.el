@@ -44,7 +44,11 @@
 (setq gc-cons-threshold (* 128 1024 1024))
 
 ;; Initialize Cask
-(require 'cask "~/.cask/cask.el")
+(setq cask-el-path
+      (if (file-exists-p "/usr/local/share/emacs/site-lisp/cask/cask.el")
+	  "/usr/local/share/emacs/site-lisp/cask/cask.el"
+	  "~/.cask/cask.el"))
+(require 'cask cask-el-path)
 (cask-initialize)
 
 ;; Init-Loader
