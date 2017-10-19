@@ -10,6 +10,7 @@
 (depends-on "nlinum")
 (depends-on "path-headerline-mode")
 (depends-on "rainbow-mode")
+(depends-on "powerline")
 
 ;; Enhanced search
 (depends-on "anzu")
