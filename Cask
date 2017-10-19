@@ -1,89 +1,57 @@
-;;;; 0. Package sources
+;; Package sources
 (source gnu)
 (source melpa)
 
-
-
-;;;; 1. Editor Environment
-
-;; Initscript
+;; Init script management
 (depends-on "init-loader")
 
 ;; Appearance
 (depends-on "monokai-theme")
 (depends-on "nlinum")
 (depends-on "path-headerline-mode")
+(depends-on "rainbow-mode")
 
-;; Japanese language support
-(depends-on "ddskk")
-
-;; Text search
+;; Enhanced search
 (depends-on "anzu")
 
-;; Window/Buffer
-(depends-on "popwin")
+;; Cursor moving support
+(depends-on "mwim")
 
-
-
-;;;; 2. Project Management
-
-;; Helm/Projectile
+;; Helm interface
 (depends-on "helm")
-(depends-on "helm-descbinds")
 (depends-on "helm-ag")
-(depends-on "projectile")
-(depends-on "helm-projectile")
+(depends-on "helm-ls-git")
 
-;; Git
+;; Flycheck
+(depends-on "flycheck")
+(depends-on "flycheck-status-emoji")
+
+;; Auto-Complete
+(depends-on "auto-complete")
+
+;; Emacs Cask integration
+(depends-on "flycheck-cask")
+
+;; Git/Magit
 (depends-on "magit")
 (depends-on "gitignore-mode")
 
-
-
-;;;; 3. Coding support
-
-;; Cursor moving
-(depends-on "mwim")
-
-;; Code prediction
-(depends-on "auto-complete")
-(depends-on "popup")
-(depends-on "fuzzy")
-
-;; Linting
-(depends-on "flycheck")
-(depends-on "flycheck-status-emoji")
-(depends-on "flycheck-cask")
-
-
-;;;; 4. Package for languages
-
-;; Ruby/Rails
+;; Ruby
+(depends-on "rspec-mode")
+(depends-on "ruby-block")
 (depends-on "ruby-end")
 (depends-on "yard-mode")
-(depends-on "ruby-block")
-(depends-on "rspec-mode")
-(depends-on "inf-ruby")
-(depends-on "projectile-rails")
-(depends-on "haml-mode")
-
-;; Web/JavaScript/Node.js
-(depends-on "web-mode")
-(depends-on "emmet-mode")
-(depends-on "sass-mode")
-(depends-on "scss-mode")
-(depends-on "js2-mode")
-(depends-on "json-mode")
-(depends-on "php-mode")
-
-;; Coffee script
-(depends-on "coffee-mode")
 
 ;; Markdown
 (depends-on "markdown-mode")
 
-;;;; Other text
+;; Web/Javascript
+(depends-on "web-mode")
+(depends-on "emmet-mode")
+(depends-on "js2-mode")
+(depends-on "json-mode")
+(depends-on "sass-mode")
+(depends-on "scss-mode")
+
+;; Languages misc
 (depends-on "yaml-mode")
-(depends-on "yatex")
-(depends-on "csv-mode")
-(depends-on "graphviz-dot-mode")

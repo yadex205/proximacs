@@ -1,15 +1,15 @@
-;;; 30_flycheck.el --- My init script for flycheck
+;;; 30_flycheck.el --- My init script for flycheck configuration
+
 
 ;;; Commentary:
 
+
 ;;; Code:
 
-;; Flyckeck global
-(require 'flycheck)
+(global-flycheck-mode 1)
+(flycheck-status-emoji-mode t)
 
-(add-hook 'after-init-hook ( lambda ()
-			     (global-flycheck-mode 1)
-			     (flycheck-status-emoji-mode t)
-			     ))
-(add-hook 'flycheck-mode-hook #'flycheck-cask-setup)
+(flycheck-cask-setup)
+
+
 ;;; 30_flycheck.el ends here

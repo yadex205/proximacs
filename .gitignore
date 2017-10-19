@@ -18,9 +18,4 @@ elpa/
 places
 recentf
 /eshell
-
-# Mac
-.DS_Store
-
-#SKK
-kkcrc
+*.elc

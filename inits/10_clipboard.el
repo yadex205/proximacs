@@ -1,10 +1,8 @@
 ;;; 10_clipboard.el --- My init script for clipboard sharing
 
+
 ;;; Commentary:
 
-;;; Some codes are quoted from
-;;; * http://hakurei-shain.blogspot.jp/2010/05/mac.html
-;;; * http://d.hatena.ne.jp/tomoya/20090807/1249601308
 
 ;;; Code:
 
@@ -21,5 +19,6 @@
   (setq interprogram-cut-function 'paste-to-osx)
   (setq interprogram-paste-function 'copy-from-osx)
   )
+
 
 ;;; 10_clipboard.el ends here
