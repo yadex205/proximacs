@@ -37,6 +37,9 @@
 (depends-on "magit")
 (depends-on "gitignore-mode")
 
+;; CMake
+(depends-on "cmake-mode")
+
 ;; Ruby
 (depends-on "rspec-mode")
 (depends-on "ruby-block")
