@@ -7,7 +7,7 @@
 ;;; Code:
 
 ;; Indentation
-(setq-default tab-width 2 indent-tabs-mode nil)
+(setq-default tab-width 8 indent-tabs-mode nil)
 
 ;; Define scroll step
 (setq scroll-step 1)
