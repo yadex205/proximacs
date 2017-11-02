@@ -14,6 +14,7 @@
 (add-to-list 'auto-mode-alist '("\\.ejs$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jake$" . js2-mode))
 (add-to-list 'auto-mode-alist '("Jakefile$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
