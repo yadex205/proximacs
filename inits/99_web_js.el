@@ -58,6 +58,11 @@
  '(js-indent-level 2)
  '(json-reformat:indent-width 2))
 
+(with-eval-after-load 'web-mode
+  ;; Disable specified keybind for 'web-mode'
+  (define-key 'web-mode-map (kbd "C-c C-m") nil) ; conflict with C-c C-m C-s
+  )
+
 (with-eval-after-load 'scss-mode
   ;; Remove flymake support for 'scss-mode'
   (delete '(".+\\.scss$" flymake-scss-init) flymake-allowed-file-name-masks)
