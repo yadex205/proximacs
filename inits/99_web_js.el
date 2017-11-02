@@ -22,7 +22,8 @@
 
 ;; Register hook
 (add-hook 'sgml-mode-hook 'emmet-mode)
-(add-hook 'web-mode 'rainbow-mode)
+(add-hook 'web-mode-hook 'rainbow-mode)
+(add-hook 'web-mode-hook 'emmet-mode)
 (add-hook 'css-mode-hook 'rainbow-mode)
 (add-hook 'sass-mode-hook 'rainbow-mode)
 
@@ -56,6 +57,11 @@
  ;; JSON-mode indent/padding
  '(js-indent-level 2)
  '(json-reformat:indent-width 2))
+
+(with-eval-after-load 'web-mode
+  ;; Disable specified keybind for 'web-mode'
+  (define-key 'web-mode-map (kbd "C-c C-m") nil) ; conflict with C-c C-m C-s
+  )
 
 (with-eval-after-load 'scss-mode
   ;; Remove flymake support for 'scss-mode'
