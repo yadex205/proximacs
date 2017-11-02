@@ -61,7 +61,7 @@
 
 (with-eval-after-load 'web-mode
   ;; Disable specified keybind for 'web-mode'
-  (define-key 'web-mode-map (kbd "C-c C-m") nil) ; conflict with C-c C-m C-s
+  (define-key web-mode-map (kbd "C-c C-m") nil) ; conflict with C-c C-m C-s
   )
 
 (with-eval-after-load 'scss-mode
