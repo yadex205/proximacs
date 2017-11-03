@@ -55,6 +55,9 @@
  ;; JS2-mode customization
  '(js2-strict-missing-semi-warning nil)
 
+ ;; 'css-mode', 'scss-mode' indent
+ '(css-indent-offset 2)
+
  ;; JSON-mode indent/padding
  '(js-indent-level 2)
  '(json-reformat:indent-width 2))
