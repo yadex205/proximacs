@@ -6,8 +6,9 @@
 
 ;;; Code:
 
-(custom-set-variables
- `(flycheck-clang-language-standard "c++11"))
+(add-hook 'c++-mode-hook
+          '(lambda ()
+             (setq flycheck-clang-language-standard "c++11")))
 
 
 ;;; 99_clang.el ends here
