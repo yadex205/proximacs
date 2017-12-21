@@ -42,6 +42,7 @@
  ;; Web-mode functions
  '(web-mode-enable-auto-pairing t)
  '(web-mode-enable-css-colorization t)
+ '(web-mode-enable-current-column-highlight t)
 
  ;; Emmet-mode indent/padding
  '(emmet-identation 2)
