@@ -29,5 +29,8 @@
 (setq backup-inhibited t)
 (setq make-backup-files nil)
 
+;; Delete selected region by C-d
+(delete-selection-mode t)
+
 
 ;;; 10_edit.el ends here
