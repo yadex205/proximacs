@@ -59,3 +59,4 @@
 
 ;; Languages misc
 (depends-on "yaml-mode")
+(depends-on "graphviz-dot-mode")
