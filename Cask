@@ -58,6 +58,7 @@
 (depends-on "scss-mode")
 
 ;; Java/JVM
+(depends-on "kotlin-mode")
 (depends-on "groovy-mode")
 
 ;; Languages misc
