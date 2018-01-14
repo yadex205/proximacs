@@ -57,6 +57,9 @@
 (depends-on "sass-mode")
 (depends-on "scss-mode")
 
+;; Java/JVM
+(depends-on "groovy-mode")
+
 ;; Languages misc
 (depends-on "yaml-mode")
 (depends-on "graphviz-dot-mode")
