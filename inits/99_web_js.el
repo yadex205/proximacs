@@ -29,6 +29,10 @@
 (add-hook 'css-mode-hook 'rainbow-mode)
 (add-hook 'sass-mode-hook 'rainbow-mode)
 
+;; Register Flycheck mode
+;; @ref http://cortyuming.hateblo.jp/entry/2018/01/10/111244
+(flycheck-add-mode 'html-tidy 'web-mode)
+
 ;; Define custom variables
 (custom-set-variables
  ;; Web-mode indent/padding
