@@ -26,6 +26,7 @@
 ;; Flycheck
 (depends-on "flycheck")
 (depends-on "flycheck-status-emoji")
+(depends-on "flycheck-popup-tip")
 
 ;; Auto-Complete
 (depends-on "auto-complete")
