@@ -62,6 +62,9 @@
 (depends-on "kotlin-mode")
 (depends-on "groovy-mode")
 
+;; Objective-C
+(depends-on "flycheck-objc-clang")
+
 ;; Languages misc
 (depends-on "yaml-mode")
 (depends-on "graphviz-dot-mode")
