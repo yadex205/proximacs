@@ -46,6 +46,7 @@
  ;; Web-mode functions
  '(web-mode-enable-auto-pairing t)
  '(web-mode-enable-css-colorization t)
+ '(web-mode-enable-current-element-highlight t)
  '(web-mode-enable-current-column-highlight t)
 
  ;; Emmet-mode indent/padding
@@ -71,6 +72,7 @@
 (with-eval-after-load 'web-mode
   ;; Disable specified keybind for 'web-mode'
   (define-key web-mode-map (kbd "C-c C-m") nil) ; conflict with C-c C-m C-s
+  (set-face-background 'web-mode-current-element-highlight-face "brightblack")
   )
 
 (with-eval-after-load 'scss-mode
