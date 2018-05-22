@@ -33,8 +33,5 @@
 (setq-default truncate-lines t)
 (setq truncate-partial-width-windows t)
 
-;; Enable powerline
-(powerline-center-theme)
-
 
 ;;; 10_appearance.el ends here
