@@ -12,6 +12,7 @@
 (depends-on "rainbow-mode")
 (depends-on "rainbow-delimiters")
 (depends-on "powerline")
+(depends-on "shackle")
 
 ;; Enhanced search
 (depends-on "anzu")
@@ -28,6 +29,7 @@
 (depends-on "flycheck")
 (depends-on "flycheck-status-emoji")
 (depends-on "flycheck-popup-tip")
+(depends-on "helm-flycheck")
 
 ;; Auto-Complete
 (depends-on "auto-complete")

@@ -15,4 +15,6 @@
  '(flycheck-popup-tip-error-prefix "😱 ")
  '(flycheck-display-errors-delay 0.3))
 
+(define-key flycheck-mode-map (kbd "C-c ! l") 'helm-flycheck)
+
 ;;; 30_flycheck.el ends here
