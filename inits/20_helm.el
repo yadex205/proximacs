@@ -32,5 +32,8 @@
 (global-set-key (kbd "C-c s") 'helm-do-ag)
 (global-set-key (kbd "C-c S") 'helm-do-ag-project-root)
 
+(custom-set-variables
+ '(helm-find-files-ignore-thing-at-point t))
+
 
 ;;; 20_helm.el ends here
