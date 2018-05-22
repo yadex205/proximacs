@@ -10,7 +10,9 @@
 (setq-default tab-width 8 indent-tabs-mode nil)
 
 ;; Define scroll step
+;; Ref: https://www.emacswiki.org/emacs/SmoothScrolling
 (setq scroll-step 1)
+(setq scroll-conservatively 10000)
 
 ;; Enable enhanced C-a
 (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
