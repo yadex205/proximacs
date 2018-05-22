@@ -34,5 +34,8 @@
 ;; Delete selected region by C-d
 (delete-selection-mode t)
 
+;; Accept all local variables without checking.
+(setq enable-local-variables :all)
+
 
 ;;; 10_edit.el ends here
