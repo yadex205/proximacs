@@ -31,7 +31,7 @@
 
 ;; Register Flycheck mode
 ;; @ref http://cortyuming.hateblo.jp/entry/2018/01/10/111244
-(flycheck-add-mode 'html-tidy 'web-mode)
+;; (flycheck-add-mode 'html-tidy 'web-mode)
 
 ;; Define custom variables
 (custom-set-variables
