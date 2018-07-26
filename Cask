@@ -41,6 +41,9 @@
 (depends-on "magit")
 (depends-on "gitignore-mode")
 
+;; Terminal/Shell
+(depends-on "multi-term")
+
 ;; CMake
 (depends-on "cmake-mode")
 
@@ -57,9 +60,11 @@
 (depends-on "web-mode")
 (depends-on "emmet-mode")
 (depends-on "js2-mode")
+(depends-on "typescript-mode")
 (depends-on "json-mode")
 (depends-on "sass-mode")
 (depends-on "scss-mode")
+(depends-on "stylus-mode")
 
 ;; Java/JVM
 (depends-on "kotlin-mode")
