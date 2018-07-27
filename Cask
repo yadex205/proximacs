@@ -56,15 +56,22 @@
 ;; Markdown
 (depends-on "markdown-mode")
 
-;; Web/Javascript
+;; HTML
 (depends-on "web-mode")
 (depends-on "emmet-mode")
-(depends-on "js2-mode")
-(depends-on "typescript-mode")
-(depends-on "json-mode")
+
+;; CSS
 (depends-on "sass-mode")
 (depends-on "scss-mode")
 (depends-on "stylus-mode")
+
+;; JavaScript/JSON
+(depends-on "js2-mode")
+(depends-on "json-mode")
+
+;; TypeScript
+(depends-on "typescript-mode")
+(depends-on "tide")
 
 ;; Java/JVM
 (depends-on "kotlin-mode")
