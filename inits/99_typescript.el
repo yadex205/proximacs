@@ -6,10 +6,20 @@
 
 ;;; Code:
 
-(require 'typescript-mode)
+(require 'web-mode)
+(require 'tide)
 
 ;; Register additional extensions
-(add-to-list 'auto-mode-alist '("\\.tsx" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx" . web-mode))
+
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (tide-setup)
+              (define-key tide-mode-map (kbd "C-c C-j") 'tide-jump-to-definition)
+              (eldoc-mode t))))
+
+(flycheck-add-mode 'typescript-tslint 'web-mode)
 
 ;; Set variables
 (custom-set-variables

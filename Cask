@@ -73,6 +73,9 @@
 (depends-on "typescript-mode")
 (depends-on "tide")
 
+;; JavaScript Frontend Frameworks
+(depends-on "vue-mode")
+
 ;; Java/JVM
 (depends-on "kotlin-mode")
 (depends-on "groovy-mode")
