@@ -33,6 +33,10 @@
 ;; Auto-Complete
 (depends-on "auto-complete")
 
+;; Company mode
+(depends-on "company")
+(depends-on "company-web")
+
 ;; Emacs Cask integration
 (depends-on "flycheck-cask")
 
