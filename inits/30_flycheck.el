@@ -9,7 +9,6 @@
 (global-flycheck-mode 1)
 (flycheck-status-emoji-mode t)
 (flycheck-popup-tip-mode t)
-(flycheck-cask-setup)
 
 (custom-set-variables
  '(flycheck-popup-tip-error-prefix "😱 ")

@@ -29,7 +29,6 @@
 (depends-on "flycheck")
 (depends-on "flycheck-status-emoji")
 (depends-on "flycheck-popup-tip")
-(depends-on "helm-flycheck")
 
 ;; Auto-Complete
 (depends-on "auto-complete")
@@ -49,7 +48,6 @@
 
 ;; Ruby
 (depends-on "rspec-mode")
-(depends-on "ruby-block")
 (depends-on "ruby-end")
 (depends-on "yard-mode")
 
