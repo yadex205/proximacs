@@ -70,6 +70,7 @@
 ;; JavaScript/JSON
 (depends-on "js2-mode")
 (depends-on "json-mode")
+(depends-on "tern")
 
 ;; TypeScript
 (depends-on "typescript-mode")
