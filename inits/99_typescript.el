@@ -14,12 +14,11 @@
 
 (add-hook 'web-mode-hook
           (lambda ()
-            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+            (when (member (file-name-extension buffer-file-name) '("ts" "tsx"))
               (tide-setup)
               (define-key tide-mode-map (kbd "C-c C-j") 'tide-jump-to-definition)
+              (flycheck-add-mode 'typescript-tslint 'web-mode)
               (eldoc-mode t))))
-
-(flycheck-add-mode 'typescript-tslint 'web-mode)
 
 ;; Set variables
 (custom-set-variables
