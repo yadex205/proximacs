@@ -14,6 +14,10 @@
 (depends-on "powerline")
 (depends-on "shackle")
 
+;; Tools
+(depends-on "multi-term")
+(depends-on "restclient")
+
 ;; Enhanced search
 (depends-on "anzu")
 
@@ -43,9 +47,6 @@
 ;; Git/Magit
 (depends-on "magit")
 (depends-on "gitignore-mode")
-
-;; Terminal/Shell
-(depends-on "multi-term")
 
 ;; CMake
 (depends-on "cmake-mode")
