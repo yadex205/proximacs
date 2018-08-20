@@ -83,4 +83,4 @@
   (setq flycheck-checker 'sass/scss-sass-lint))
 
 
-;;; 99_web_js.el ends here
+;;; 99_web.el ends here
