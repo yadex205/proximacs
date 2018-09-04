@@ -33,6 +33,7 @@
 (depends-on "flycheck")
 (depends-on "flycheck-status-emoji")
 (depends-on "flycheck-popup-tip")
+(depends-on "helm-flycheck")
 
 ;; Auto-Complete
 (depends-on "auto-complete")

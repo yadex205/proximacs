@@ -6,6 +6,7 @@
 
 ;;; Code:
 
+(require 'web-mode)
 (require 'js2-mode)
 (require 'tern)
 
@@ -25,6 +26,7 @@
 (add-hook 'web-mode-hook
           (lambda()
             (when (member (file-name-extension buffer-file-name) '("vue"))
+              (setq web-mode-script-padding nil)
               (flycheck-add-mode 'javascript-eslint 'web-mode)
               (custom-set-variables
                '(web-mode-code-indent-offset 2)))))
