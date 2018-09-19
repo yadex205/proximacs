@@ -92,3 +92,4 @@
 (depends-on "yaml-mode")
 (depends-on "graphviz-dot-mode")
 (depends-on "glsl-mode")
+(depends-on "nginx-mode")
