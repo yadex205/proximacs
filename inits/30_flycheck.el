@@ -12,7 +12,8 @@
 
 (custom-set-variables
  '(flycheck-popup-tip-error-prefix "😱 ")
- '(flycheck-display-errors-delay 0.3))
+ '(flycheck-display-errors-delay 0.3)
+ '(flycheck-temp-prefix ".flycheck"))
 
 (define-key flycheck-mode-map (kbd "C-c ! l") 'helm-flycheck)
 

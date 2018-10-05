@@ -18,7 +18,11 @@
               (tide-setup)
               (define-key tide-mode-map (kbd "C-c C-j") 'tide-jump-to-definition)
               (flycheck-add-mode 'typescript-tslint 'web-mode)
-              (eldoc-mode t))))
+              (eldoc-mode t))
+
+            (when (member (file-name-extension buffer-file-name) '("tsx"))
+              (custom-set-variables
+               '(emmet-expand-jsx-className? t)))))
 
 ;; Set variables
 (custom-set-variables
