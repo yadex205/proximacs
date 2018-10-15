@@ -17,6 +17,7 @@
 ;; Tools
 (depends-on "multi-term")
 (depends-on "restclient")
+(depends-on "dired-hacks" :git "https://github.com/Fuco1/dired-hacks.git")
 
 ;; Enhanced search
 (depends-on "anzu")
