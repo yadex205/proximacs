@@ -1,4 +1,4 @@
-;;; 10_keybind.el --- My keybind definitions.
+;;; 99_css.el --- My configurations for CSS/Sass/SCSS/Stylus environment.
 ;;
 ;; Copyright (c) 2017-2018 Kanon Kakuno
 ;;
@@ -33,14 +33,21 @@
 
 ;;; Code:
 
-;; Back to previous buffer (reverse version of C-x o)
-(global-set-key "\C-xp" (lambda () (interactive) (other-window -1)))
+(add-hook 'css-mode-hook
+          (lambda ()
+            (rainbow-mode t)
+            (custom-set-variables
+             '(css-indent-offset 2))))
+(add-hook 'sass-mode-hook
+          (lambda ()
+            (rainbow-mode t)
+            (custom-set-variables
+             '(css-indent-offset 2))))
+(add-hook 'scss-mode-hook
+          (lambda ()
+            (rainbow-mode t)
+            (delete '(".+\\.scss$" flymake-scss-init) flymake-allowed-file-name-masks)
+            (custom-set-variables
+             '(css-indent-offset 2))))
 
-;; Page scroll down/up
-(define-key esc-map "p" 'scroll-down)
-(define-key esc-map "n" 'scroll-up)
-
-;; Indent region
-(define-key global-map (kbd "C-x C-i") 'indent-region)
-
-;;; 10_keybind.el ends here
+;;; 99_css.el ends here

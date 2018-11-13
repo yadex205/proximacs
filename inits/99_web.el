@@ -1,10 +1,35 @@
-;;; 99_web_js.el --- An init script to configure html/css/js development environment
+;;; 99_web_js.el --- My configurations for files related to web.
+;;
+;; Copyright (c) 2017-2018 Kanon Kakuno
+;;
+;; Author: Kanon Kakuno <yadex205@outlook.jp>
+;; URL: https://github.com/yadex205/.emacs.d
 
+;; This file is not part of GNU Emacs.
+
+;;; License:
+
+;; The MIT License (MIT)
+;;
+;; Permission is hereby granted, free of charge, to any person obtaining a copy
+;; of this software and associated documentation files (the "Software"), to deal
+;; in the Software without restriction, including without limitation the rights
+;; to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+;; copies of the Software, and to permit persons to whom the Software is
+;; furnished to do so, subject to the following conditions:
+;;
+;; The above copyright notice and this permission notice shall be included in
+;; all copies or substantial portions of the Software.
+;;
+;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+;; AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+;; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+;; THE SOFTWARE.
 
 ;;; Commentary:
-
-;; TODO: integrate 'rainbow-mode' to 'sass-mode'
-
 
 ;;; Code:
 
@@ -14,20 +39,12 @@
 (add-to-list 'auto-mode-alist '("\\.ejs$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.jake$" . js2-mode))
-(add-to-list 'auto-mode-alist '("Jakefile$" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
-
-;; Register to interpreter-mode-alist
-(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.vue$" . web-mode))
 
 ;; Register hook
 (add-hook 'sgml-mode-hook 'emmet-mode)
 (add-hook 'web-mode-hook 'rainbow-mode)
 (add-hook 'web-mode-hook 'emmet-mode)
-(add-hook 'css-mode-hook 'rainbow-mode)
-(add-hook 'sass-mode-hook 'rainbow-mode)
 
 ;; Register Flycheck mode
 ;; @ref http://cortyuming.hateblo.jp/entry/2018/01/10/111244
@@ -54,20 +71,7 @@
 
  ;; Emmet-mode functions
  '(emmet-mode-cursor-between-quotes t)
- '(emmet-self-closing-tag-style " /")
-
- ;; JS2-mode indent/padding
- '(js2-basic-offset 2)
-
- ;; JS2-mode customization
- '(js2-strict-missing-semi-warning nil)
-
- ;; 'css-mode', 'scss-mode' indent
- '(css-indent-offset 2)
-
- ;; JSON-mode indent/padding
- '(js-indent-level 2)
- '(json-reformat:indent-width 2))
+ '(emmet-self-closing-tag-style " /"))
 
 (with-eval-after-load 'web-mode
   ;; Disable specified keybind for 'web-mode'
@@ -75,12 +79,12 @@
   (set-face-background 'web-mode-current-element-highlight-face "brightblack")
   )
 
-(with-eval-after-load 'scss-mode
-  ;; Remove flymake support for 'scss-mode'
-  (delete '(".+\\.scss$" flymake-scss-init) flymake-allowed-file-name-masks)
-
-  ;; Set flycheck checker for 'scss-mode'
-  (setq flycheck-checker 'sass/scss-sass-lint))
-
+(add-hook 'web-mode-hook
+          (lambda()
+            (when (member (file-name-extension buffer-file-name) '("vue"))
+              '(flycheck-add-mode 'javascript-eslint 'web-mode)
+              (custom-set-variables
+               '(web-mode-code-indent-offset 2)
+               '(web-mode-script-padding nil)))))
 
 ;;; 99_web.el ends here
