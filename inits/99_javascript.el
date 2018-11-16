@@ -1,4 +1,4 @@
-;;; 99_javascript.el --- My configurations for JavaScript environment.
+;;; 99_javascript.el --- My configurations for JavaScript/TypeScript environment.
 ;;
 ;; Copyright (c) 2017-2018 Kanon Kakuno
 ;;
@@ -33,22 +33,45 @@
 
 ;;; Code:
 
+(require 'web-mode)
+(require 'tide)
+
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.es6$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jake$" . js2-mode))
 (add-to-list 'auto-mode-alist '("^Jakefile$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx" . js2-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx" . web-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+
+(defun setup-tide-integration ()
+  "Setup tide integration for JavaScript/TypeScript related modes."
+  (tide-setup)
+  (tide-hl-identifier-mode t)
+  (eldoc-mode t)
+  (define-key tide-mode-map (kbd "C-c C-j") 'tide-jump-to-definition))
 
 (add-hook 'js2-mode-hook
           (lambda ()
-            (tide-setup)
-            (tide-hl-identifier-mode t)
-            (eldoc-mode t)
-            '(define-key tide-mode-map (kbd "C-c C-j") 'tide-jump-to-definition)
+            (setup-tide-integration)
             '(flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
             (custom-set-variables
              '(js2-basic-offset 2)
              '(js2-strict-missing-semi-warning nil))))
+
+(add-hook 'typescript-mode-hook
+          (lambda ()
+            (setup-tide-integration)
+            (custom-set-variables
+             '(typescript-indent-level 2))))
+
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (member (file-name-extension buffer-file-name) '("tsx"))
+              (setup-tide-integration)
+              (flycheck-add-mode 'typescript-tslint 'web-mode)
+              (custom-set-variables
+               '(emmet-expand-jsx-className? t)
+               '(web-mode-code-indent-offset 2)))))
 
 ;;; 99_javascript.el ends here
