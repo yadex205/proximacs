@@ -1,10 +1,11 @@
-;;; init.el -- My init script
+;;; init.el -- Proximacs main init script.
 
-;; Copyright (C) 2017 Kanon Kakuno
+;; Copyright (C) 2017-2018 Kanon Kakuno
+;;
 ;; Author: Kanon Kakuno <yadex205@outlook.jp>
+;; URL: https://github.com/yadex205/proximacs
 
 ;; This file is not part of GNU Emacs.
-
 
 ;;; License:
 
@@ -28,9 +29,7 @@
 ;; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 ;; THE SOFTWARE.
 
-
 ;;; Commentary:
-
 
 ;;; Code:
 

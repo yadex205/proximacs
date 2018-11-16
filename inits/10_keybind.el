@@ -1,9 +1,9 @@
-;;; 10_keybind.el --- My keybind definitions.
+;;; 10_keybind.el --- Proximacs keybind definitions.
 ;;
 ;; Copyright (c) 2017-2018 Kanon Kakuno
 ;;
 ;; Author: Kanon Kakuno <yadex205@outlook.jp>
-;; URL: https://github.com/yadex205/.emacs.d
+;; URL: https://github.com/yadex205/proximacs
 
 ;; This file is not part of GNU Emacs.
 

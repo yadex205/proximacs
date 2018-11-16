@@ -1,9 +1,9 @@
-;;; 99_javascript.el --- My configurations for JavaScript/TypeScript environment.
+;;; 99_javascript.el --- Proximacs configurations for JavaScript/TypeScript environment.
 ;;
 ;; Copyright (c) 2017-2018 Kanon Kakuno
 ;;
 ;; Author: Kanon Kakuno <yadex205@outlook.jp>
-;; URL: https://github.com/yadex205/.emacs.d
+;; URL: https://github.com/yadex205/proximacs
 
 ;; This file is not part of GNU Emacs.
 

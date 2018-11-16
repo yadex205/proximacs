@@ -1,9 +1,9 @@
-;;; 10_powerline.el -- My configurations for emacs-powerline.
+;;; 10_powerline.el -- Proximacs configurations for emacs-powerline.
 ;;
 ;; Copyright (c) 2017-2018 Kanon Kakuno
 ;;
 ;; Author: Kanon Kakuno <yadex205@outlook.jp>
-;; URL: https://github.com/yadex205/.emacs.d
+;; URL: https://github.com/yadex205/proximacs
 
 ;; This file is not part of GNU Emacs.
 

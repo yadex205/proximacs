@@ -1,9 +1,9 @@
-;;; 99_web_js.el --- My configurations for files related to web.
+;;; 99_web_js.el --- Proximacs configurations for files related to web.
 ;;
 ;; Copyright (c) 2017-2018 Kanon Kakuno
 ;;
 ;; Author: Kanon Kakuno <yadex205@outlook.jp>
-;; URL: https://github.com/yadex205/.emacs.d
+;; URL: https://github.com/yadex205/proximacs
 
 ;; This file is not part of GNU Emacs.
 

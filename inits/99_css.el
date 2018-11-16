@@ -1,9 +1,9 @@
-;;; 99_css.el --- My configurations for CSS/Sass/SCSS/Stylus environment.
+;;; 99_css.el --- Proximacs configurations for CSS/Sass/SCSS/Stylus environment.
 ;;
 ;; Copyright (c) 2017-2018 Kanon Kakuno
 ;;
 ;; Author: Kanon Kakuno <yadex205@outlook.jp>
-;; URL: https://github.com/yadex205/.emacs.d
+;; URL: https://github.com/yadex205/proximacs
 
 ;; This file is not part of GNU Emacs.
 

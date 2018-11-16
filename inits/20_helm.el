@@ -1,9 +1,9 @@
-;;; 20_helm.el --- My configurations for helm.
+;;; 20_helm.el --- Proximacs configurations for helm.
 ;;
 ;; Copyright (c) 2017-2018 Kanon Kakuno
 ;;
 ;; Author: Kanon Kakuno <yadex205@outlook.jp>
-;; URL: https://github.com/yadex205/.emacs.d
+;; URL: https://github.com/yadex205/proximacs
 
 ;; This file is not part of GNU Emacs.
 

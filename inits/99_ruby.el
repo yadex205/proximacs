@@ -1,9 +1,9 @@
-;;; 99_ruby.el --- My configures for Ruby environment.
+;;; 99_ruby.el --- Proximacs configures for Ruby environment.
 ;;
 ;; Copyright (c) 2017-2018 Kanon Kakuno
 ;;
 ;; Author: Kanon Kakuno <yadex205@outlook.jp>
-;; URL: https://github.com/yadex205/.emacs.d
+;; URL: https://github.com/yadex205/proximacs
 
 ;; This file is not part of GNU Emacs.
 

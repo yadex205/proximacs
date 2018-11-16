@@ -1,9 +1,9 @@
-;;; 90_languages.el -- My configurations for some languages.
+;;; 90_languages.el -- Proximacs configurations for some languages.
 ;;
 ;; Copyright (c) 2017-2018 Kanon Kakuno
 ;;
 ;; Author: Kanon Kakuno <yadex205@outlook.jp>
-;; URL: https://github.com/yadex205/.emacs.d
+;; URL: https://github.com/yadex205/proximacs
 
 ;; This file is not part of GNU Emacs.
 

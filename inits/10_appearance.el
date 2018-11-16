@@ -1,9 +1,9 @@
-;;; 10_appearance.el -- My configurations for appearances.
+;;; 10_appearance.el -- Proximacs configurations for appearances.
 ;;
 ;; Copyright (c) 2017-2018 Kanon Kakuno
 ;;
 ;; Author: Kanon Kakuno <yadex205@outlook.jp>
-;; URL: https://github.com/yadex205/.emacs.d
+;; URL: https://github.com/yadex205/proximacs
 
 ;; This file is not part of GNU Emacs.
 
