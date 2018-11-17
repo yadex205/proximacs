@@ -1,4 +1,4 @@
-;;; 90_languages.el -- Proximacs configurations for some languages.
+;;; 99_clanguage.el --- Proximacs configurations for C/C++/Obj-C environment.
 ;;
 ;; Copyright (c) 2017-2018 Kanon Kakuno
 ;;
@@ -33,52 +33,29 @@
 
 ;;; Code:
 
-;; Conf
-(add-hook 'conf-mode-hook
-          (lambda ()
-            (custom-set-variables
-             '(tab-width 2))))
+(require 'company)
 
-;; Java/Kotlin/Groovy
-(add-hook 'java-mode-hook
-          (lambda ()
-            (custom-set-variables
-             '(c-basic-offset 2))))
-(add-hook 'kotlin-mode-hook
-          (lambda ()
-            (custom-set-variables
-             '(kotlin-tab-width 2))))
-(add-to-list 'auto-mode-alist '("\\.gradle$" . groovy-mode))
+(defun setup-irony-integration ()
+  "Setup irony integration for C/C++/Obj-C related modes."
+  (irony-mode t)
+  (add-to-list 'company-backends 'company-irony))
 
-;; GLSL
-(add-to-list 'auto-mode-alist '("\\.fs$"   . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.frag$" . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.vs$"   . glsl-mode))
-(add-to-list 'auto-mode-alist '("\\.vert$" . glsl-mode))
-(add-hook 'glsl-mode-hook
+(add-hook 'c-mode-hook
           (lambda ()
+            (setup-irony-integration)
             (custom-set-variables
-             '(c-basic-offset 2))))
+             '(c-basic-offset 2)
+             '(flycheck-clang-language-standard "c11"))))
 
-;; Markdown
-(add-hook 'markdown-mode-hook
+(add-hook 'c++-mode-hook
           (lambda ()
+            (setup-irony-integration)
             (custom-set-variables
-             '(whitespace-action nil))))
+             '(c-basic-offset 2)
+             '(flycheck-clang-language-standard "c++14"))))
 
-;; Graphviz Dot
-(add-hook 'graphviz-dot-mode-hook
+(add-hook 'objc-mode-hook'
           (lambda ()
-            (custom-set-variables
-             '(graphviz-dot-indent-width 2)
-             '(graphviz-dot-auto-indent-on-semi nil))))
+            (setup-irony-integration)))
 
-;; JSON
-(add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
-(add-hook 'json-mode-hook
-          (lambda ()
-            (custom-set-variables
-             '(js-indent-level 2)
-             '(json-reformat:indent-width 2))))
-
-;;; 90_languages.el ends here
+;;; 99_c_language.el ends here
