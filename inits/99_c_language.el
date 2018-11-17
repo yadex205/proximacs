@@ -31,6 +31,9 @@
 
 ;;; Commentary:
 
+;; The irony-server configurations at here is specialized for macOS with llvm
+;; installed with HomeBrew.
+
 ;;; Code:
 
 (require 'company)
@@ -39,6 +42,10 @@
   "Setup irony integration for C/C++/Obj-C related modes."
   (irony-mode t)
   (add-to-list 'company-backends 'company-irony))
+
+(custom-set-variables
+ '(irony-extra-cmake-args
+   (list "-DCMAKE_PREFIX_PATH=/local/usr/opt/llvm/" "-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON")))
 
 (add-hook 'c-mode-hook
           (lambda ()

@@ -14,6 +14,9 @@ ac-comphist.dat
 .cask/
 elpa/
 
+# Irony
+/irony
+
 # misc
 places
 recentf
