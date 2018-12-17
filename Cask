@@ -42,6 +42,7 @@
 ;; Company mode
 (depends-on "company")
 (depends-on "company-web")
+(depends-on "company-irony")
 
 ;; Emacs Cask integration
 (depends-on "flycheck-cask")
@@ -52,6 +53,9 @@
 
 ;; CMake
 (depends-on "cmake-mode")
+
+;; C/C++
+(depends-on "irony")
 
 ;; Ruby
 (depends-on "rspec-mode")
