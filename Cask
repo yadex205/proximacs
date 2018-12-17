@@ -82,6 +82,9 @@
 ;; JavaScript Frontend Frameworks
 (depends-on "vue-mode")
 
+;; PHP
+(depends-on "php-mode")
+
 ;; Java/JVM
 (depends-on "kotlin-mode")
 (depends-on "groovy-mode")

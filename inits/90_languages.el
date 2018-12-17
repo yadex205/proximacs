@@ -46,6 +46,14 @@
              '(c-basic-offset 2)
              '(flycheck-clang-language-standard "c++11"))))
 
+;; PHP
+(add-hook 'php-mode-hook
+          (lambda()
+            (custom-set-variables
+             '(indent-tabs-mode nil)
+             '(tab-width 2)
+             '(c-basic-offset 2))))
+
 ;; Java/Kotlin/Groovy
 (add-hook 'java-mode-hook
           (lambda ()

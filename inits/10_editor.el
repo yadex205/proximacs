@@ -66,6 +66,8 @@
   (setq interprogram-paste-function 'copy-from-osx)
   )
 
+(global-set-key (kbd "C-u") 'hs-toggle-hiding)
+
 (require 'mwim)
 (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
 

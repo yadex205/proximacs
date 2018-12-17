@@ -36,16 +36,19 @@
 (add-hook 'css-mode-hook
           (lambda ()
             (rainbow-mode t)
+            (hs-minor-mode 1)
             (custom-set-variables
              '(css-indent-offset 2))))
 (add-hook 'sass-mode-hook
           (lambda ()
             (rainbow-mode t)
+            (hs-minor-mode 1)
             (custom-set-variables
              '(css-indent-offset 2))))
 (add-hook 'scss-mode-hook
           (lambda ()
             (rainbow-mode t)
+            (hs-minor-mode 1)
             (delete '(".+\\.scss$" flymake-scss-init) flymake-allowed-file-name-masks)
             (custom-set-variables
              '(css-indent-offset 2))))
