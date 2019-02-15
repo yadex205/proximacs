@@ -58,7 +58,7 @@
  '(web-mode-code-indent-offset 2)
  '(web-mode-style-padding 2)
  '(web-mode-script-padding 2)
- '(web-mode-block-padding 2)
+ '(web-mode-block-padding 0)
 
  ;; Web-mode functions
  '(web-mode-enable-auto-pairing t)
@@ -73,18 +73,20 @@
  '(emmet-mode-cursor-between-quotes t)
  '(emmet-self-closing-tag-style " /"))
 
-(with-eval-after-load 'web-mode
-  ;; Disable specified keybind for 'web-mode'
-  (define-key web-mode-map (kbd "C-c C-m") nil) ; conflict with C-c C-m C-s
-  (set-face-background 'web-mode-current-element-highlight-face "brightblack")
-  )
+(require 'web-mode)
 
 (add-hook 'web-mode-hook
-          (lambda()
+          (lambda ()
+            (define-key web-mode-map (kbd "C-c C-m") nil)
+            (set-face-background 'web-mode-current-element-highlight-face "brightblack")
+
+            (when (member (file-name-extension buffer-file-name) '("php"))
+              (custom-set-variables
+               '(web-mode-block-padding 0)))
+
             (when (member (file-name-extension buffer-file-name) '("vue"))
               '(flycheck-add-mode 'javascript-eslint 'web-mode)
               (custom-set-variables
-               '(web-mode-code-indent-offset 2)
-               '(web-mode-script-padding nil)))))
+               '(web-mode-script-padding 0)))))
 
 ;;; 99_web.el ends here
