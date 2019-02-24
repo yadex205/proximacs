@@ -41,11 +41,18 @@
 (defun setup-irony-integration ()
   "Setup irony integration for C/C++/Obj-C related modes."
   (irony-mode t)
+  (company-irony-setup-begin-commands)
+  (irony-cdb-autosetup-compile-options)
   (add-to-list 'company-backends 'company-irony))
 
 (custom-set-variables
  '(irony-extra-cmake-args
    (list "-DCMAKE_PREFIX_PATH=/local/usr/opt/llvm/" "-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON")))
+
+
+
+(add-hook 'irony-mode-hook #'irony-eldoc)
+(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
 
 (add-hook 'c-mode-hook
           (lambda ()

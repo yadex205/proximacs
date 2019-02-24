@@ -62,6 +62,8 @@
 (add-hook 'typescript-mode-hook
           (lambda ()
             (setup-tide-integration)
+            (flycheck-add-mode 'javascript-eslint 'typescript-mode)
+            (flycheck-add-next-checker 'typescript-tide 'javascript-eslint)
             (custom-set-variables
              '(typescript-indent-level 2))))
 
@@ -69,7 +71,8 @@
           (lambda ()
             (when (member (file-name-extension buffer-file-name) '("tsx"))
               (setup-tide-integration)
-              (flycheck-add-mode 'typescript-tslint 'web-mode)
+              (flycheck-add-mode 'javascript-eslint 'web-mode)
+              (flycheck-add-next-checker 'typescript-tide 'javascript-eslint)
               (custom-set-variables
                '(emmet-expand-jsx-className? t)
                '(web-mode-code-indent-offset 2)))))

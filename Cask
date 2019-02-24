@@ -56,6 +56,8 @@
 
 ;; C/C++
 (depends-on "irony")
+(depends-on "irony-eldoc")
+(depends-on "flycheck-irony")
 
 ;; Ruby
 (depends-on "rspec-mode")
