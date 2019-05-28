@@ -36,10 +36,14 @@
 (require 'web-mode)
 (require 'tide)
 
+(setq flycheck-javascript-eslint-executable "eslint_d")
+;;; (setq flycheck-css-stylelint-executable "stylelint_d")
+;;; (setq flycheck-scss-stylelint-executable "stylelint_d")
+
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.es6$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jake$" . js2-mode))
-(add-to-list 'auto-mode-alist '("^Jakefile$" . js2-mode))
+(add-to-list 'auto-mode-alist '("Jakefile$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx" . js2-jsx-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx" . web-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
@@ -70,9 +74,11 @@
 (add-hook 'web-mode-hook
           (lambda ()
             (when (member (file-name-extension buffer-file-name) '("tsx"))
-              (setup-tide-integration)
               (flycheck-add-mode 'javascript-eslint 'web-mode)
-              (flycheck-add-next-checker 'typescript-tide 'javascript-eslint)
+              (setup-tide-integration)
+              (setq-default flycheck-disabled-checkers '(jsx-tide handlebars))
+              (flycheck-add-mode 'css-stylelint 'web-mode)
+              (flycheck-add-next-checker 'tsx-tide 'javascript-eslint 'append)
               (custom-set-variables
                '(emmet-expand-jsx-className? t)
                '(web-mode-code-indent-offset 2)))))
