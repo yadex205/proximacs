@@ -33,6 +33,10 @@
 
 ;;; Code:
 
+;; Shell
+(custom-set-variables
+ '(sh-basic-offset 2))
+
 ;; Conf
 (add-hook 'conf-mode-hook
           (lambda ()
