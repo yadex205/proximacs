@@ -38,10 +38,12 @@
 (setq initial-scratch-message "")
 (menu-bar-mode 0)
 
-;; Init package management and Cask
-(package-initialize)
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
+(add-to-list 'load-path "~/.emacs.d/depends/quelpa")
+(custom-set-variables
+ '(quelpa-update-melpa-p nil))
+(require 'quelpa)
+
+(load "~/.emacs.d/quelpa-packages")
 
 ;; Load external init scripts
 (require 'init-loader)

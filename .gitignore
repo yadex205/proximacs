@@ -7,6 +7,9 @@ auto-save-list/
 # Magit
 /transient
 
+# Quelpa
+/quelpa
+
 # Auto-Complete
 ac-comphist.dat
 

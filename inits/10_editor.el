@@ -87,7 +87,8 @@
 (custom-set-variables
  '(flycheck-popup-tip-error-prefix "😱 ")
  '(flycheck-display-errors-delay 0.3)
- '(flycheck-temp-prefix ".flycheck"))
+ '(flycheck-temp-prefix ".flycheck")
+ '(flycheck-emacs-lisp-load-path 'inherit))
 
 (require 'company)
 (global-company-mode t)
