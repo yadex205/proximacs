@@ -10,18 +10,11 @@ auto-save-list/
 # straight.el
 /straight
 
-# Quelpa
-/quelpa
-
 # Auto-Complete
 ac-comphist.dat
 
 # Projectile
 *.eld
-
-# Cask/Package
-.cask/
-elpa/
 
 # Irony
 /irony

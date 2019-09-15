@@ -68,6 +68,7 @@
 (straight-use-package 'multi-term)
 (straight-use-package 'dired-hacks)
 (straight-use-package 'magit)
+(straight-use-package 'mmm-mode)
 
 ;; editor enhancement
 (straight-use-package 'anzu)
