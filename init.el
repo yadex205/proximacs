@@ -81,6 +81,7 @@
 (straight-use-package 'helm-ls-git)
 (straight-use-package 'helm-flycheck)
 (straight-use-package 'mwim)
+(straight-use-package 'nhexl-mode)
 
 ;; C/C++
 (straight-use-package 'irony)
