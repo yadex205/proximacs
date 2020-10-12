@@ -68,6 +68,7 @@
             (setup-tide-integration)
             (flycheck-add-mode 'javascript-eslint 'typescript-mode)
             (flycheck-add-next-checker 'typescript-tide 'javascript-eslint)
+            (prettier-js-mode)
             (custom-set-variables
              '(typescript-indent-level 2))))
 
@@ -79,6 +80,7 @@
               (setq-default flycheck-disabled-checkers '(jsx-tide handlebars))
               (flycheck-add-mode 'css-stylelint 'web-mode)
               (flycheck-add-next-checker 'tsx-tide 'javascript-eslint 'append)
+              (prettier-js-mode t)
               (custom-set-variables
                '(emmet-expand-jsx-className? t)
                '(web-mode-code-indent-offset 2)))))

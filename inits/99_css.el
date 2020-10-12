@@ -50,6 +50,7 @@
             (rainbow-mode t)
             (hs-minor-mode 1)
             (delete '(".+\\.scss$" flymake-scss-init) flymake-allowed-file-name-masks)
+            (prettier-js-mode t)
             (custom-set-variables
              '(css-indent-offset 2))))
 
