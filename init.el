@@ -93,6 +93,10 @@
 ;; Objective C
 (straight-use-package 'flycheck-objc-clang)
 
+;; Elixir
+(straight-use-package 'elixir-mode)
+(straight-use-package 'alchemist)
+
 ;; Ruby
 (straight-use-package 'rspec-mode)
 (straight-use-package 'ruby-end)
