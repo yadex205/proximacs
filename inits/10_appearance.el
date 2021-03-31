@@ -33,7 +33,12 @@
 
 ;;; Code:
 
+(require 'monokai-theme)
+(require 'web-mode)
+
 (load-theme 'monokai t)
+(set-face-foreground 'web-mode-html-tag-bracket-face monokai-foreground)
+
 (add-hook 'window-setup-hook
           (lambda ()
             (unless (display-graphic-p (selected-frame))
