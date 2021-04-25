@@ -1,26 +1,21 @@
 # Emacs
-auto-save-list/
 \#*\#
 .\#*
 *~
+*.elc
+auto-save-list
+eshell
+places
+recentf
+
+# Irony
+/irony
+
+# lsp-mode
+.lsp-*
 
 # Magit
 /transient
 
 # straight.el
 /straight
-
-# Auto-Complete
-ac-comphist.dat
-
-# Projectile
-*.eld
-
-# Irony
-/irony
-
-# misc
-places
-recentf
-/eshell
-*.elc

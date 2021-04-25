@@ -35,10 +35,11 @@
 ;; Modify emacs native features
 (custom-set-variables
  '(backup-inhibited t)
- '(gc-cons-threshold 64000000)
+ '(gc-cons-threshold 100000000)
  '(indent-tabs-mode nil)
  '(isearch-lazy-count t)
  '(make-backup-files nil)
+ '(read-process-output-max (* 1024 1024))
  '(tab-width 2)
  '(whitespace-style '(face trailing tabs spaces empty space-mark tab-mark))
  )
@@ -140,6 +141,7 @@
 (straight-use-package 'flycheck-popup-tip)
 (straight-use-package 'flycheck-status-emoji)
 (straight-use-package 'helm-flycheck)
+(straight-use-package 'lsp-mode)
 (custom-set-variables
  '(company-idle-delay 0.2)
  '(flycheck-disabled-checkers '(handlebars jsx-tide))
@@ -156,7 +158,9 @@
 (with-eval-after-load 'flycheck
   (add-hook 'flycheck-mode-hook
             (lambda ()
-              (flycheck-popup-tip-mode t)
+              ;; Using flycheck-popup-tip-mode with lsp-mode causes "Flycheck error display error: (error Lisp nesting exceeds ‘max-lisp-eval-depth’)",
+              ;; then stop to enable this globally.
+              ;; (flycheck-popup-tip-mode t)
               (flycheck-status-emoji-mode t)
               (define-key flycheck-mode-map (kbd "C-c ! l") 'helm-flycheck))))
 
@@ -212,6 +216,7 @@
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (flycheck-mode t)
+            (flycheck-popup-tip-mode t)
             (company-mode t)))
 
 ;; Language/Framework specified configurations (Frontend)
@@ -242,6 +247,7 @@
              '(css-indent-offset 2))
             (company-mode t)
             (flycheck-mode t)
+            (flycheck-popup-tip-mode t)
             (prettier-js-mode t)))
 (add-hook 'scss-mode-hook
           (lambda ()
@@ -260,6 +266,7 @@
           (lambda ()
             (company-mode t)
             (flycheck-mode t)
+            (flycheck-popup-tip-mode t)
             (prettier-js-mode t)
             (when (member (file-name-extension buffer-file-name) '("html"))
               (emmet-mode t)
@@ -310,6 +317,17 @@
 (add-to-list 'auto-mode-alist '("\\.vs$" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.frag$" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.vert$" . glsl-mode))
+
+;; Language/Framework specified configurations (Golang)
+(straight-use-package 'go-mode)
+(add-hook 'go-mode-hook
+          (lambda ()
+            (custom-set-variables
+             '(lsp-go-use-placeholders nil)
+             '(lsp-prefer-flymake nil))
+            (lsp-deferred)
+            (add-hook 'before-save-hook #'lsp-format-buffer t t)
+            (add-hook 'before-save-hook #'lsp-organize-imports t t)))
 
 ;; Language/Framework specified configurations (Java/JVM)
 (straight-use-package 'groovy-mode)
