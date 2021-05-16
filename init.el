@@ -281,6 +281,7 @@
               (eldoc-mode t)
               (define-key tide-mode-map (kbd "C-c C-j") 'tide-jump-to-definition)
               (flycheck-add-mode 'javascript-eslint 'web-mode)
+              (flycheck-add-mode 'typescript-tide 'web-mode)
               (flycheck-add-next-checker 'typescript-tide 'javascript-eslint 'append))
             (when (member (file-name-extension buffer-file-name) '("tsx"))
               (emmet-mode t)
