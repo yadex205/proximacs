@@ -309,11 +309,6 @@
 (add-to-list 'auto-mode-alist '("\\.tsx?$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.vue$" . web-mode))
 
-;; Language/Framework specified configurations (Git)
-(straight-use-package 'gitattributes-mode)
-(straight-use-package 'gitconfig-mode)
-(straight-use-package 'gitignore-mode)
-
 ;; Language/Framework specified configurations (GLSL)
 (straight-use-package 'glsl-mode)
 (add-hook 'glsl-mode-hook
