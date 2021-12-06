@@ -104,7 +104,7 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-c p f") 'helm-ls-git-ls)
+(global-set-key (kbd "C-c p f") 'helm-ls-git)
 (global-set-key (kbd "C-c s") 'helm-do-ag)
 (global-set-key (kbd "C-c S") 'helm-do-ag-project-root)
 (define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
