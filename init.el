@@ -350,6 +350,15 @@
 ;; Language/Framework specified configurations (Ruby)
 (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
 
+;; Language/Framework specified configurations (Rust)
+(straight-use-package 'rust-mode)
+(add-hook 'rust-mode-hook
+          (lambda ()
+            (custom-set-variables
+             '(rust-format-on-save t)
+             '(lsp-prefer-flymake nil))
+            (lsp-deferred)))
+
 ;; Language/Framework specified configurations (Shell script)
 (add-hook 'shell-mode-hook
           (lambda ()
@@ -363,18 +372,6 @@
 
 ;; Language/Framework specified configurations (Yaml)
 (straight-use-package 'yaml-mode)
-
-;; (straight-use-package 'elixir-mode)
-;; (straight-use-package 'alchemist)
-;; ;; Frontend
-;; (straight-use-package 'vue-mode)
-;; 
-;; ;; Java
-;; 
-;; ;; languages
-;; (straight-use-package 'cmake-mode)
-;; (straight-use-package 'graphviz-dot-mode)
-;; (straight-use-package 'nginx-mode)
 
 
 ;;; init.el ends here
