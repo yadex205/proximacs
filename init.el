@@ -113,13 +113,13 @@
 ;; https://monolog.linkode.co.jp/articles/kotoh/Emacs%E3%81%A7helm%E3%82%92%E4%BD%BF%E3%81%86
 (defvar helm-source-emacs-commands
   (helm-build-sync-source "Emacs commands"
-                          :candidates (lambda ()
-                                        (let ((cmds))
-                                          (mapatoms
-                                           (lambda (elt) (when (commandp elt) (push elt cmds))))
-                                          cmds))
-                          :coerce #'intern-soft
-                          :action #'command-execute)
+    :candidates (lambda ()
+                  (let ((cmds))
+                    (mapatoms
+                     (lambda (elt) (when (commandp elt) (push elt cmds))))
+                    cmds))
+    :coerce #'intern-soft
+    :action #'command-execute)
   "Helm sources for Emacs commands.")
 (custom-set-variables
  '(helm-find-files-ignore-thing-at-point t)
