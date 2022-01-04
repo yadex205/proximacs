@@ -155,6 +155,8 @@
               (define-key company-active-map (kbd "C-p") 'company-select-previous)
               (define-key company-search-map (kbd "C-n") 'company-select-next)
               (define-key company-search-map (kbd "C-p") 'company-select-previous))))
+
+;; Flycheck (depends on Helm)
 (with-eval-after-load 'flycheck
   (add-hook 'flycheck-mode-hook
             (lambda ()
@@ -163,6 +165,19 @@
               ;; (flycheck-popup-tip-mode t)
               (flycheck-status-emoji-mode t)
               (define-key flycheck-mode-map (kbd "C-c ! l") 'helm-flycheck))))
+(flycheck-define-checker general-stylelint
+  "A checker for CSS and related languages using Stylelint"
+  :command ("stylelint"
+            (eval flycheck-stylelint-args)
+            (option-flag "--quiet" flycheck-stylelint-quiet)
+            (config-file "--config" flycheck-general-stylelintrc))
+  :standard-input t
+  :error-parser flycheck-parse-stylelint
+  :predicate flycheck-buffer-nonempty-p
+  :modes (scss-mode))
+(flycheck-def-config-file-var flycheck-general-stylelintrc
+    (general-stylelint) nil)
+(add-to-list 'flycheck-checkers 'general-stylelint)
 
 ;; Magit
 (straight-use-package 'magit)
@@ -254,6 +269,7 @@
             (custom-set-variables
              '(css-indent-offset 2))
             (delete '(".+\\.scss$" flymake-scss-init) flymake-allowed-file-name-masks)
+            (flycheck-disable-checker 'scss-stylelint)
             (company-mode t)
             (flycheck-mode t)
             (prettier-js-mode t)))
