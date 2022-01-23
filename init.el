@@ -256,6 +256,8 @@
  '(web-mode-markup-indent-offset 2)
  '(web-mode-script-padding 2)
  '(web-mode-style-padding 2))
+(setq web-mode-content-types-alist
+      '(("javascript" . "\\.[cm]?js$")))
 (add-hook 'css-mode-hook
           (lambda ()
             (custom-set-variables
@@ -287,7 +289,7 @@
             (when (member (file-name-extension buffer-file-name) '("html"))
               (emmet-mode t)
               )
-            (when (member (file-name-extension buffer-file-name) '("js"))
+            (when (member (file-name-extension buffer-file-name) '("js" "cjs" "mjs"))
               (tide-setup)
               (tide-hl-identifier-mode t)
               (eldoc-mode t)
@@ -317,7 +319,9 @@
               (custom-set-variables
                '(web-mode-script-padding 0)))))
 (add-hook 'sgml-mode-hook 'emmet-mode)
+(add-to-list 'auto-mode-alist '("\\.cjs$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ejs$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mjs$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode))
