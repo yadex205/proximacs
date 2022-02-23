@@ -98,6 +98,8 @@
 (straight-use-package 'mwim)
 (straight-use-package 'path-headerline-mode)
 (straight-use-package 'shackle)
+(custom-set-variables
+ '(helm-ag-base-command "ag --nocolor --nogroup --hidden"))
 (helm-mode t)
 (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
 (global-set-key (kbd "C-h") 'helm-mini)
