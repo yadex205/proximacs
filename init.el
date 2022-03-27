@@ -86,7 +86,8 @@
 ;; Editor appearance
 (straight-use-package 'monokai-theme)
 (load-theme 'monokai t)
-(set-face-background 'default "unspecified-bg")
+(if (not window-system ) (progn
+  (set-face-background 'default "unspecified-bg")))
 
 (straight-use-package 'powerline)
 (powerline-center-theme)
