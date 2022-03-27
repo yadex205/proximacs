@@ -37,6 +37,7 @@
  '(backup-inhibited t)
  '(gc-cons-threshold 100000000)
  '(indent-tabs-mode nil)
+ '(inhibit-startup-screen t)
  '(isearch-lazy-count t)
  '(make-backup-files nil)
  '(read-process-output-max (* 1024 1024))
@@ -48,7 +49,9 @@
 (global-display-line-numbers-mode t)
 (global-whitespace-mode t)
 (menu-bar-mode 0)
+(scroll-bar-mode 0)
 (show-paren-mode t)
+(tool-bar-mode 0)
 
 ;; Define keybinds with emacs native features
 (global-set-key (kbd "C-x p") (lambda () (interactive) (other-window -1)))
