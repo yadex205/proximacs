@@ -49,9 +49,10 @@
 (global-display-line-numbers-mode t)
 (global-whitespace-mode t)
 (menu-bar-mode 0)
-(scroll-bar-mode 0)
 (show-paren-mode t)
-(tool-bar-mode 0)
+(when window-system
+  (scroll-bar-mode 0)
+  (tool-bar-mode 0))
 
 ;; Define keybinds with emacs native features
 (global-set-key (kbd "C-x p") (lambda () (interactive) (other-window -1)))
