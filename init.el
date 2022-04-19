@@ -1,79 +1,46 @@
-;;; init.el -- Proximacs main init script.
+;;; init.el -- Proximacs init script
 
 ;; Copyright (C) 2017-2021 Kanon Kakuno
 ;;
 ;; Author: Kanon Kakuno <yadex205@outlook.jp>
 ;; URL: https://github.com/yadex205/proximacs
 
-;; This file is not part of GNU Emacs.
 ;;; License:
-
 ;; The MIT License (MIT)
-;;
-;; Permission is hereby granted, free of charge, to any person obtaining a copy
-;; of this software and associated documentation files (the "Software"), to deal
-;; in the Software without restriction, including without limitation the rights
-;; to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-;; copies of the Software, and to permit persons to whom the Software is
-;; furnished to do so, subject to the following conditions:
-;;
-;; The above copyright notice and this permission notice shall be included in
-;; all copies or substantial portions of the Software.
-;;
-;; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-;; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-;; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-;; AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-;; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-;; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-;; THE SOFTWARE.
 
 ;;; Commentary:
 
 ;;; Code:
 
-;; Modify emacs native features
+;;
+;;; Constants
+
+(defvar is-macos (eq system-type 'darwin) "Non-nil means this GNU Emacs is running on a macOS.")
+(defvar is-linux (eq system-type 'gnu/linux) "Non-nil means this GNU Emacs is running on a GNU/Linux.")
+(defvar is-wsl2 (and is-linux (numberp (string-match-p "WSL2" (shell-command-to-string "uname -r")))) "Non-nil means this GNU Emacs is running on a GNU/Linux under WSL2.")
+
+
+
+;;
+;;; Performance
+
+(setq gc-cons-threshold (* 1024 1024 1024))
+(setq read-process-output-max (* 10 1024 1024))
+
+
+
+;;
+;;; GNU Emacs native behaviors
+
+(setq make-backup-files nil)
+
+
+
+;;
+;;; Package manager (straight.el)
+
 (custom-set-variables
- '(backup-inhibited t)
- '(gc-cons-threshold 100000000)
- '(indent-tabs-mode nil)
- '(inhibit-startup-screen t)
- '(isearch-lazy-count t)
- '(make-backup-files nil)
- '(read-process-output-max (* 1024 1024))
- '(tab-width 2)
- '(whitespace-style '(face trailing tabs spaces empty space-mark tab-mark))
- )
-
-(delete-selection-mode t)
-(global-display-line-numbers-mode t)
-(global-whitespace-mode t)
-(menu-bar-mode 0)
-(show-paren-mode t)
-(when window-system
-  (scroll-bar-mode 0)
-  (tool-bar-mode 0))
-
-;; Define keybinds with emacs native features
-(global-set-key (kbd "C-x p") (lambda () (interactive) (other-window -1)))
-(global-set-key (kbd "C-x TAB") 'indent-region)
-
-;; Integrate with clipboard
-(when (eq system-type 'darwin)
-  (defun copy-from-macos ()
-    (shell-command-to-string "pbpaste"))
-  (defun paste-to-macos (text &optional push)
-    (let ((process-connection-type nil))
-      (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
-        (process-send-string proc text)
-        (process-send-eof proc))))
-  (setq interprogram-cut-function 'paste-to-macos)
-  (setq interprogram-paste-function 'copy-from-macos)
-  )
-
-;; straight.el
-;; (custom-set-variables
-;;  '(straight-check-for-modifications nil))
+ '(straight-check-for-modifications nil))
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -87,110 +54,150 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; Editor appearance
+
+
+;;
+;;; Appearance
+
+;; Hide GNU Emacs native UIs
+(menu-bar-mode 0)
+
+;; Show match parens
+(show-paren-mode t)
+
+;; Show line numbers
+(global-display-line-numbers-mode t)
+
+;; Show whitespaces
+(custom-set-variables
+ '(whitespace-style '(face trailing tabs spaces empty space-mark tab-mark)))
+(global-whitespace-mode t)
+
+;; Apply monokai theme
 (straight-use-package 'monokai-theme)
 (load-theme 'monokai t)
-(if (not window-system ) (progn
-  (set-face-background 'default "unspecified-bg")))
+(when (not window-system)
+  (set-face-background 'default "unspecified-bg"))
 
+;; Apply Powerline
 (straight-use-package 'powerline)
 (powerline-center-theme)
 
-;; Editor experience enhancement
+
+
+;;
+;;; Default coding behaviors
+
+(custom-set-variables
+ '(indent-tabs-mode nil)
+ '(tab-width 2))
+
+
+
+;;
+;;; Coding experience enhancements
+
+ (delete-selection-mode t)
+
+(custom-set-variables
+ '(isearch-lazy-count t)
+ '(isearch-lazy-highlight t))
+
+;; Share clipboard with system
+(defun copy-to-system-clipboard (text &optional push)
+  "Send TEXT to system clipboard.  PUSH will not be used."
+  (cond (is-macos
+         (let ((process-connection-type nil))
+           (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+             (process-send-string proc text)
+             (process-send-eof proc))))
+        (is-wsl2
+         (let ((process-connection-type nil))
+           (let ((proc (start-process "clip.exe" "*Messages*" "clip.exe")))
+             (process-send-string proc text)
+             (process-send-eof proc))))))
+
+(defun copy-from-system-clipboard ()
+  "Receive text from system clipboard."
+  (cond (is-macos (shell-command-to-string "pbpaste"))))
+
+(custom-set-variables
+ '(interprogram-cut-function 'copy-to-system-clipboard)
+ '(interprogram-paste-function 'copy-from-system-clipboard))
+
+;; Enable mwim
+(straight-use-package 'mwim)
+(global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
+
+;; Enable helm
 (straight-use-package 'helm)
 (straight-use-package 'helm-ag)
 (straight-use-package 'helm-ls-git)
-(straight-use-package 'mwim)
-(straight-use-package 'path-headerline-mode)
-(straight-use-package 'shackle)
 (custom-set-variables
  '(helm-ag-base-command "ag --nocolor --nogroup --hidden"))
 (helm-mode t)
-(global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
-(global-set-key (kbd "C-h") 'helm-mini)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-c p f") 'helm-ls-git)
-(global-set-key (kbd "C-c s") 'helm-do-ag)
-(global-set-key (kbd "C-c S") 'helm-do-ag-project-root)
-(define-key helm-map (kbd "TAB") 'helm-execute-persistent-action)
-(define-key helm-read-file-map (kbd "TAB") 'helm-execute-persistent-action)
-(define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
-;; https://monolog.linkode.co.jp/articles/kotoh/Emacs%E3%81%A7helm%E3%82%92%E4%BD%BF%E3%81%86
-(defvar helm-source-emacs-commands
-  (helm-build-sync-source "Emacs commands"
-    :candidates (lambda ()
-                  (let ((cmds))
-                    (mapatoms
-                     (lambda (elt) (when (commandp elt) (push elt cmds))))
-                    cmds))
-    :coerce #'intern-soft
-    :action #'command-execute)
-  "Helm sources for Emacs commands.")
+
+;; Enable Selectrum with plugins
+(straight-use-package 'selectrum)
+(straight-use-package 'selectrum-prescient)
+(selectrum-mode t)
+(selectrum-prescient-mode t)
+
+;; Enable Consult
+(straight-use-package 'consult)
+
+;; Enable shackle
+(straight-use-package 'shackle)
 (custom-set-variables
- '(helm-find-files-ignore-thing-at-point t)
- '(helm-mini-default-sources
-   '(helm-source-buffers-list
-     helm-source-recentf
-     helm-source-files-in-current-dir
-     helm-source-emacs-commands))
  '(shackle-rules
-   '(("*Help*" :select t)
-     ("\*helm" :regexp t :align bottom)))
- )
-(path-headerline-mode t)
+      '(("*Help*" :select t))))
 (shackle-mode t)
 
-;; Coding experience enhancement
-(straight-use-package 'company)
-(straight-use-package 'flycheck)
-(straight-use-package 'flycheck-popup-tip)
-(straight-use-package 'flycheck-status-emoji)
-(straight-use-package 'helm-flycheck)
-(straight-use-package 'lsp-mode)
+;; Enable company-mode
+(straight-use-package 'company-mode)
 (custom-set-variables
- '(company-idle-delay 0.2)
- '(flycheck-disabled-checkers '(handlebars jsx-tide))
+ '(company-idle-delay 0.2))
+
+;; Enable flycheck with plugins
+(straight-use-package 'flycheck)
+(straight-use-package 'flycheck-inline)
+(straight-use-package 'flycheck-status-emoji)
+(straight-use-package 'consult-flycheck)
+(custom-set-variables
  '(flycheck-display-errors-delay 0.3)
- '(flycheck-popup-tip-error-prefix "🖕 ")
  '(flycheck-temp-prefix ".flycheck"))
-(with-eval-after-load 'company
-  (add-hook 'company-mode-hook
-            (lambda ()
-              (define-key company-active-map (kbd "C-n") 'company-select-next)
-              (define-key company-active-map (kbd "C-p") 'company-select-previous)
-              (define-key company-search-map (kbd "C-n") 'company-select-next)
-              (define-key company-search-map (kbd "C-p") 'company-select-previous))))
+(add-hook 'flycheck-mode-hook
+          (lambda ()
+            (flycheck-status-emoji-mode t)
+            (flycheck-inline-mode t)))
 
-;; Flycheck (depends on Helm)
-(with-eval-after-load 'flycheck
-  (add-hook 'flycheck-mode-hook
-            (lambda ()
-              ;; Using flycheck-popup-tip-mode with lsp-mode causes "Flycheck error display error: (error Lisp nesting exceeds ‘max-lisp-eval-depth’)",
-              ;; then stop to enable this globally.
-              ;; (flycheck-popup-tip-mode t)
-              (flycheck-status-emoji-mode t)
-              (define-key flycheck-mode-map (kbd "C-c ! l") 'helm-flycheck))))
-(flycheck-define-checker general-stylelint
-  "A checker for CSS and related languages using Stylelint"
-  :command ("stylelint"
-            (eval flycheck-stylelint-args)
-            (option-flag "--quiet" flycheck-stylelint-quiet)
-            (config-file "--config" flycheck-general-stylelintrc))
-  :standard-input t
-  :error-parser flycheck-parse-stylelint
-  :predicate flycheck-buffer-nonempty-p
-  :modes (scss-mode))
-(flycheck-def-config-file-var flycheck-general-stylelintrc
-    (general-stylelint) nil)
-(add-to-list 'flycheck-checkers 'general-stylelint)
 
-;; Magit
+;; Enable path-headeline-mode
+(straight-use-package 'path-headerline-mode)
+(path-headerline-mode t)
+
+
+
+;;
+;;; Integrate with Git (Magit)
 (straight-use-package 'magit)
-(global-set-key (kbd "C-c C-m C-S") 'magit-status)
 
-;; Language/Framework specified configurations (C/C++/C#/Obj-C)
+
+
+;;
+;;; Integrate with LSP (lsp-mode)
+
+(custom-set-variables
+ '(lsp-enable-snippet nil)
+ '(lsp-headerline-breadcrumb-enable nil)
+ '(lsp-lens-enable nil))
+(straight-use-package 'lsp-mode)
+
+
+
+;;
+;;; C/C++/C#/Obj-C
+
 (straight-use-package 'irony)
 (straight-use-package 'irony-eldoc)
 (straight-use-package 'company-irony)
@@ -234,28 +241,38 @@
             (flycheck-irony-setup)
             (irony-cdb-autosetup-compile-options)))
 
-;; Language/Framework specified configurations (Elisp)
+
+
+;;
+;;; Elisp
+
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (flycheck-mode t)
-            (flycheck-popup-tip-mode t)
             (company-mode t)))
 
-;; Language/Framework specified configurations (Frontend)
-(straight-use-package 'emmet-mode)
-(straight-use-package 'prettier-js)
+
+
+;;
+;;; HTML/CSS/JavaScript/TypeScript
+
 (straight-use-package 'scss-mode)
 (straight-use-package 'tide)
-(straight-use-package 'web-mode)
+
+;; Enable emmet
+(straight-use-package 'emmet-mode)
 (custom-set-variables
- '(emmet-expand-jsx-className? t)
  '(emmet-identation 2)
  '(emmet-mode-cursor-between-quotes t)
- '(emmet-self-closing-tag-style " /")
- '(flycheck-javascript-eslint-executable "eslint_d")
+ '(emmet-self-closing-tag-style " /"))
+
+;; Enable web-mode
+(straight-use-package 'web-mode)
+(custom-set-variables
  '(web-mode-block-padding 0)
  '(web-mode-code-indent-offset 2)
  '(web-mode-css-indent-offset 2)
+ '(web-mode-content-types-alist '(("javascript" . "\\.[cm]?js$")))
  '(web-mode-enable-auto-pairing t)
  '(web-mode-enable-css-colorization t)
  '(web-mode-enable-current-column-highlight t)
@@ -263,8 +280,41 @@
  '(web-mode-markup-indent-offset 2)
  '(web-mode-script-padding 2)
  '(web-mode-style-padding 2))
-(setq web-mode-content-types-alist
-      '(("javascript" . "\\.[cm]?js$")))
+(add-to-list 'auto-mode-alist '("\\.cjs$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ejs$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mjs$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx?$" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
+(with-eval-after-load 'web-mode
+  (set-face-foreground 'web-mode-html-tag-bracket-face monokai-foreground))
+
+
+;; Integrate with Prettier (prettier-js-mode)
+(straight-use-package 'prettier-js)
+
+;; Define Stylelint checker for flycheck
+(flycheck-define-checker general-stylelint
+  "A checker for CSS and related languages using Stylelint"
+  :command ("stylelint"
+            (eval flycheck-stylelint-args)
+            (option-flag "--quiet" flycheck-stylelint-quiet)
+            (config-file "--config" flycheck-general-stylelintrc))
+  :standard-input t
+  :error-parser flycheck-parse-stylelint
+  :predicate flycheck-buffer-nonempty-p
+  :modes (scss-mode))
+(flycheck-def-config-file-var flycheck-general-stylelintrc
+    (general-stylelint) nil)
+(add-to-list 'flycheck-checkers 'general-stylelint)
+
+;; Setup flycheck
+(custom-set-variables
+ '(flycheck-javascript-eslint-executable "eslint_d"))
+
+;; Configure for each languages with web-mode
 (add-hook 'css-mode-hook
           (lambda ()
             (custom-set-variables
@@ -282,21 +332,16 @@
             (company-mode t)
             (flycheck-mode t)
             (prettier-js-mode t)))
-(with-eval-after-load 'web-mode
-  (add-hook 'web-mode-hook
-            (lambda ()
-              (define-key web-mode-map (kbd "C-c C-m") nil)
-              (set-face-foreground 'web-mode-html-tag-bracket-face monokai-foreground))))
 (add-hook 'web-mode-hook
           (lambda ()
+            (when (locate-dominating-file buffer-file-name "deno.json")
+              (lsp-deferred))
             (when (locate-dominating-file buffer-file-name "package.json")
               (company-mode t)
               (flycheck-mode t)
-              (flycheck-popup-tip-mode t)
               (prettier-js-mode t)
               (when (member (file-name-extension buffer-file-name) '("html"))
-                (emmet-mode t)
-                )
+                (emmet-mode t))
               (when (member (file-name-extension buffer-file-name) '("js" "cjs" "mjs"))
                 (tide-setup)
                 (tide-hl-identifier-mode t)
@@ -315,32 +360,18 @@
                 (flycheck-add-next-checker 'typescript-tide 'javascript-eslint 'append))
               (when (member (file-name-extension buffer-file-name) '("tsx"))
                 (emmet-mode t)
-                (custom-set-variables
-                 '(emmet-expand-jsx-className? t))
                 (tide-setup)
                 (tide-hl-identifier-mode t)
                 (eldoc-mode t)
                 (define-key tide-mode-map (kbd "C-c C-j") 'tide-jump-to-definition)
                 (flycheck-add-mode 'javascript-eslint 'web-mode)
-                (flycheck-add-next-checker 'tsx-tide 'javascript-eslint 'append))
-              (when (member (file-name-extension buffer-file-name) '("vue"))
-                (custom-set-variables
-                 '(web-mode-script-padding 0))))
-            (when (locate-dominating-file buffer-file-name "deno.json")
-              (when (member (file-name-extension buffer-file-name) '("js" "ts" "jsx" "tsx" "json"))
-                (lsp-deferred)))))
-(add-hook 'sgml-mode-hook 'emmet-mode)
-(add-to-list 'auto-mode-alist '("\\.cjs$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.ejs$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mjs$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx?$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tsx?$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.vue$" . web-mode))
+                (flycheck-add-next-checker 'tsx-tide 'javascript-eslint 'append)))))
 
-;; Language/Framework specified configurations (GLSL)
+
+
+;;
+;;; GLSL
+
 (straight-use-package 'glsl-mode)
 (add-hook 'glsl-mode-hook
           (lambda ()
@@ -351,7 +382,10 @@
 (add-to-list 'auto-mode-alist '("\\.frag$" . glsl-mode))
 (add-to-list 'auto-mode-alist '("\\.vert$" . glsl-mode))
 
-;; Language/Framework specified configurations (Golang)
+
+
+;;
+;;; Go
 (straight-use-package 'go-mode)
 (add-hook 'go-mode-hook
           (lambda ()
@@ -362,7 +396,10 @@
             (add-hook 'before-save-hook #'lsp-format-buffer t t)
             (add-hook 'before-save-hook #'lsp-organize-imports t t)))
 
-;; Language/Framework specified configurations (Java/JVM)
+
+
+;;
+;;; Java/JVM
 (straight-use-package 'groovy-mode)
 (straight-use-package 'kotlin-mode)
 (add-hook 'java-mode-hook
@@ -375,13 +412,22 @@
              '(kotlin-tab-width 2))))
 (add-to-list 'auto-mode-alist '("\\.gradle$" . groovy-mode))
 
-;; Language/Framework specified configurations (Markdown)
+
+
+;;
+;;; Markdown
 (straight-use-package 'markdown-mode)
 
-;; Language/Framework specified configurations (Ruby)
+
+
+;;
+;;; Ruby
 (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
 
-;; Language/Framework specified configurations (Rust)
+
+
+;;
+;;; Rust
 (straight-use-package 'rust-mode)
 (add-hook 'rust-mode-hook
           (lambda ()
@@ -390,19 +436,65 @@
              '(lsp-prefer-flymake nil))
             (lsp-deferred)))
 
-;; Language/Framework specified configurations (Shell script)
+
+
+;;
+;;; Shell scripts
 (add-hook 'shell-mode-hook
           (lambda ()
             (sh-basic-offset 2)))
 
-;; Language/Framework specified configurations (Unix style conf)
+
+
+;;
+;;; Unix style conf
 (add-hook 'conf-mode-hook
           (lambda ()
             (custom-set-variables
              '(tab-width 2))))
 
-;; Language/Framework specified configurations (Yaml)
+
+
+;;
+;;; Yaml
 (straight-use-package 'yaml-mode)
+
+
+
+;;
+;;; Keybinds
+
+(global-set-key (kbd "C-x p") (lambda () (interactive) (other-window -1)))
+(global-set-key (kbd "C-x TAB") 'indent-region)
+
+;; mwim
+(global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
+
+;; Selectrum + Consult
+;; (global-set-key (kbd "C-c S") 'consult-git-grep)
+;; (global-set-key (kbd "C-c p f") 'consult-find)
+
+;; Flycheck
+(add-hook 'flycheck-mode-hook
+          (lambda ()
+            (define-key flycheck-mode-map (kbd "C-c ! l") 'consult-flycheck)))
+
+;; Magit
+(global-set-key (kbd "C-c C-m C-S") 'magit-status)
+
+;; web-mode
+(with-eval-after-load 'web-mode
+  (define-key web-mode-map (kbd "C-c C-m") nil))
+
+;; helm
+(global-set-key (kbd "C-h") 'helm-mini)
+
+;; helm-ls-git
+(global-set-key (kbd "C-c p f") 'helm-ls-git)
+
+;; helm-ag
+(global-set-key (kbd "C-c s") 'helm-do-ag)
+(global-set-key (kbd "C-c S") 'helm-do-ag-project-root)
 
 
 ;;; init.el ends here
