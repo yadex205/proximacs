@@ -423,7 +423,9 @@
 ;;
 ;;; Ruby
 (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
-
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (lsp-deferred)))
 
 
 ;;
