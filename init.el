@@ -97,7 +97,7 @@
 ;;
 ;;; Coding experience enhancements
 
- (delete-selection-mode t)
+(delete-selection-mode t)
 
 (custom-set-variables
  '(isearch-lazy-count t)
