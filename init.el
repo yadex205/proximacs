@@ -129,6 +129,10 @@
 (straight-use-package 'mwim)
 (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
 
+;; Enable Dired Sidebar
+(straight-use-package 'dired-sidebar)
+
+
 ;; Enable helm
 (straight-use-package 'helm)
 (straight-use-package 'helm-ls-git)
@@ -487,6 +491,9 @@
 ;; web-mode
 (with-eval-after-load 'web-mode
   (define-key web-mode-map (kbd "C-c C-m") nil))
+
+;; Dired Sidebar
+(global-set-key (kbd "C-c ;") 'dired-sidebar-toggle-sidebar)
 
 ;; helm
 (global-set-key (kbd "C-h") 'helm-mini)
