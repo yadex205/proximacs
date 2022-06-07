@@ -131,7 +131,6 @@
 
 ;; Enable helm
 (straight-use-package 'helm)
-(straight-use-package 'helm-ag)
 (straight-use-package 'helm-ls-git)
 (custom-set-variables
  '(helm-ag-base-command "ag --nocolor --nogroup --hidden"))
@@ -145,6 +144,7 @@
 
 ;; Enable Consult
 (straight-use-package 'consult)
+(straight-use-package 'consult-ag)
 
 ;; Enable shackle
 (straight-use-package 'shackle)
@@ -495,8 +495,7 @@
 (global-set-key (kbd "C-c p f") 'helm-ls-git)
 
 ;; helm-ag
-(global-set-key (kbd "C-c s") 'helm-do-ag)
-(global-set-key (kbd "C-c S") 'helm-do-ag-project-root)
+(global-set-key (kbd "C-c s") 'consult-ag)
 
 
 ;;; init.el ends here
