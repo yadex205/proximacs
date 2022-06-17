@@ -508,5 +508,9 @@
 ;; helm-ag
 (global-set-key (kbd "C-c s") 'consult-ag)
 
+;; Xref
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (global-set-key (kbd "C-c C-j") 'xref-find-definitions)))
 
 ;;; init.el ends here
