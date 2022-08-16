@@ -13,6 +13,7 @@ recentf
 
 # lsp-mode
 .lsp-*
+projects
 
 # Magit
 /transient
