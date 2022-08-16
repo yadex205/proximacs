@@ -426,11 +426,19 @@
 
 
 ;;
+;;; Mermaid
+(straight-use-package 'mermaid-mode)
+(add-to-list 'auto-mode-alist '("\\.mmd$" . mermaid-mode))
+
+
+
+;;
 ;;; Ruby
 (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
 (add-hook 'ruby-mode-hook
           (lambda ()
             (lsp-deferred)))
+
 
 
 ;;
@@ -488,6 +496,15 @@
 
 ;; Magit
 (global-set-key (kbd "C-c C-m C-S") 'magit-status)
+
+;; Mermaid
+(with-eval-after-load 'mermaid-mode
+  (define-key mermaid-mode-map (kbd "C-c C-c") nil)
+  (define-key mermaid-mode-map (kbd "C-c C-f") nil)
+  (define-key mermaid-mode-map (kbd "C-c C-b") nil)
+  (define-key mermaid-mode-map (kbd "C-c C-r") nil)
+  (define-key mermaid-mode-map (kbd "C-c C-o") nil)
+  (define-key mermaid-mode-map (kbd "C-c C-d") nil))
 
 ;; web-mode
 (with-eval-after-load 'web-mode
