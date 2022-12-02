@@ -411,11 +411,16 @@
           (lambda ()
             (custom-set-variables
              '(c-basic-offset 2))))
+(add-hook 'groovy-mode-hook
+          (lambda ()
+            (custom-set-variables
+             '(groovy-indent-offset 2))))
 (add-hook 'kotlin-mode-hook
           (lambda ()
             (custom-set-variables
              '(kotlin-tab-width 2))))
 (add-to-list 'auto-mode-alist '("\\.gradle$" . groovy-mode))
+(add-to-list 'auto-mode-alist '("\\.jenkinsfile$" . groovy-mode))
 
 
 
