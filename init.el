@@ -442,6 +442,8 @@
 (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
 (add-hook 'ruby-mode-hook
           (lambda ()
+            (custom-set-variables
+             '(ruby-align-chained-calls t))
             (lsp-deferred)))
 
 
