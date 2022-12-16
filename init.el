@@ -1,6 +1,6 @@
 ;;; init.el -- Proximacs init script
 
-;; Copyright (C) 2017-2021 Kanon Kakuno
+;; Copyright (C) 2017-2022 Kanon Kakuno
 ;;
 ;; Author: Kanon Kakuno <yadex205@outlook.jp>
 ;; URL: https://github.com/yadex205/proximacs
@@ -141,11 +141,13 @@
  '(helm-ag-base-command "ag --nocolor --nogroup --hidden"))
 (helm-mode t)
 
-;; Enable Selectrum with plugins
-(straight-use-package 'selectrum)
-(straight-use-package 'selectrum-prescient)
-(selectrum-mode t)
-(selectrum-prescient-mode t)
+
+;; Enable Vertico
+(straight-use-package 'vertico)
+(straight-use-package 'vertico-prescient)
+(vertico-mode)
+(vertico-prescient-mode)
+
 
 ;; Enable Consult
 (straight-use-package 'consult)
