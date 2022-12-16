@@ -134,11 +134,6 @@
 (straight-use-package 'dired-sidebar)
 
 
-;; Enable helm
-(straight-use-package 'helm)
-(helm-mode t)
-
-
 ;; Enable Vertico
 (straight-use-package 'vertico)
 (straight-use-package 'vertico-prescient)
@@ -522,9 +517,6 @@
 
 ;; Dired Sidebar
 (global-set-key (kbd "C-c ;") 'dired-sidebar-toggle-sidebar)
-
-;; helm
-(global-set-key (kbd "C-h") 'helm-mini)
 
 ;; Consult
 (global-set-key (kbd "C-c s") 'consult-ag)
