@@ -434,7 +434,8 @@
 (add-hook 'ruby-mode-hook
           (lambda ()
             (custom-set-variables
-             '(ruby-align-chained-calls t))
+             '(ruby-align-chained-calls t)
+             '(ruby-deep-indent-paren-style nil)) ; @see https://blog.willnet.in/entry/2012/06/16/212313
             (lsp-deferred)))
 
 
