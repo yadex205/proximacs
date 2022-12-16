@@ -130,10 +130,6 @@
 (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
 
 
-;; Enable Dired Sidebar
-(straight-use-package 'dired-sidebar)
-
-
 ;; Enable Vertico
 (straight-use-package 'vertico)
 (straight-use-package 'vertico-prescient)
@@ -511,12 +507,6 @@
 ;; web-mode
 (with-eval-after-load 'web-mode
   (define-key web-mode-map (kbd "C-c C-m") nil))
-
-;; dired
-(define-key dired-mode-map (kbd "TAB") 'dired-subtree-toggle)
-
-;; Dired Sidebar
-(global-set-key (kbd "C-c ;") 'dired-sidebar-toggle-sidebar)
 
 ;; Consult
 (global-set-key (kbd "C-c s") 'consult-ag)
