@@ -136,9 +136,6 @@
 
 ;; Enable helm
 (straight-use-package 'helm)
-(straight-use-package 'helm-ls-git)
-(custom-set-variables
- '(helm-ag-base-command "ag --nocolor --nogroup --hidden"))
 (helm-mode t)
 
 
@@ -152,6 +149,7 @@
 ;; Enable Consult
 (straight-use-package 'consult)
 (straight-use-package 'consult-ag)
+(straight-use-package 'consult-ls-git)
 
 ;; Enable shackle
 (straight-use-package 'shackle)
@@ -528,11 +526,9 @@
 ;; helm
 (global-set-key (kbd "C-h") 'helm-mini)
 
-;; helm-ls-git
-(global-set-key (kbd "C-c p f") 'helm-ls-git)
-
-;; helm-ag
+;; Consult
 (global-set-key (kbd "C-c s") 'consult-ag)
+(global-set-key (kbd "C-c p f") 'consult-ls-git)
 
 ;; Xref
 (add-hook 'ruby-mode-hook
