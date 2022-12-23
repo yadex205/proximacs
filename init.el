@@ -130,9 +130,14 @@
 (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
 
 
+;; Enable Embark
+(straight-use-package 'embark)
+
+
 ;; Enable Vertico
 (straight-use-package 'vertico)
 (straight-use-package 'vertico-prescient)
+(straight-use-package 'embark-consult)
 (vertico-mode)
 (vertico-prescient-mode)
 
@@ -484,9 +489,8 @@
 ;; mwim
 (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
 
-;; Selectrum + Consult
-;; (global-set-key (kbd "C-c S") 'consult-git-grep)
-;; (global-set-key (kbd "C-c p f") 'consult-find)
+;; Embark
+(global-set-key (kbd "C-c +") 'embark-act)
 
 ;; Flycheck
 (add-hook 'flycheck-mode-hook
