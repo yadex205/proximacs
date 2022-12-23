@@ -395,13 +395,12 @@
 
 
 ;;
-;;; Java/JVM
+;;; Java/JVM/Processing PDE
 (straight-use-package 'groovy-mode)
 (straight-use-package 'kotlin-mode)
 (add-hook 'java-mode-hook
           (lambda ()
-            (custom-set-variables
-             '(c-basic-offset 2))))
+            (setq c-basic-offset 2)))
 (add-hook 'groovy-mode-hook
           (lambda ()
             (custom-set-variables
@@ -410,6 +409,7 @@
           (lambda ()
             (custom-set-variables
              '(kotlin-tab-width 2))))
+(add-to-list 'auto-mode-alist '("\\.pde$" . java-mode))
 (add-to-list 'auto-mode-alist '("\\.gradle$" . groovy-mode))
 (add-to-list 'auto-mode-alist '("\\.jenkinsfile$" . groovy-mode))
 
