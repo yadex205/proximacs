@@ -92,6 +92,21 @@
  '(indent-tabs-mode nil)
  '(tab-width 2))
 
+;; Avoid opening image files by "display-buffer" on CLI environment
+(defun advice-display-buffer-cli-filter (original-display-buffer-function buffer-or-name &optional action frame)
+  "Advice function to conditionally override 'display-buffer' for CLI environment."
+  (if (not (display-graphic-p))
+      (with-current-buffer buffer-or-name
+        (if (and (buffer-file-name)
+                 (image-type-from-file-name (buffer-file-name)))
+            (browse-url (buffer-file-name))
+            (message "Opening image is not supported on CLI environment.")
+          (funcall original-display-buffer-function buffer-or-name action frame)))
+    (funcall original-display-buffer-function buffer-or-name action frame)))
+
+(when (not (display-graphic-p))
+  (advice-add 'display-buffer :around #'advice-display-buffer-cli-filter))
+
 
 
 ;;
