@@ -522,7 +522,8 @@
   (define-key mermaid-mode-map (kbd "C-c C-b") nil)
   (define-key mermaid-mode-map (kbd "C-c C-r") nil)
   (define-key mermaid-mode-map (kbd "C-c C-o") nil)
-  (define-key mermaid-mode-map (kbd "C-c C-d") nil))
+  (define-key mermaid-mode-map (kbd "C-c C-d") nil)
+  (define-key mermaid-mode-map (kbd "C-c C-d c") 'mermaid-compile))
 
 ;; web-mode
 (with-eval-after-load 'web-mode
