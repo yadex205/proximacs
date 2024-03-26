@@ -262,6 +262,7 @@
 ;;
 ;;; Elisp
 
+(straight-use-package 'package-lint)
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (flycheck-mode t)
@@ -308,8 +309,9 @@
   (set-face-foreground 'web-mode-html-tag-bracket-face monokai-foreground))
 
 
-;; Integrate with Prettier (prettier-js-mode)
-(straight-use-package 'prettier-js)
+;; Integrate with Biome (biomejs-format)
+(straight-use-package
+ '(biomejs-format :type git :host github :repo "yadex205/emacs-biomejs-format"))
 
 ;; Define Stylelint checker for flycheck
 (flycheck-define-checker general-stylelint
@@ -338,7 +340,7 @@
             (company-mode t)
             (flycheck-mode t)
             (flycheck-popup-tip-mode t)
-            (prettier-js-mode t)))
+            (biomejs-format-mode t)))
 (add-hook 'scss-mode-hook
           (lambda ()
             (custom-set-variables
@@ -347,7 +349,7 @@
             (flycheck-disable-checker 'scss-stylelint)
             (company-mode t)
             (flycheck-mode t)
-            (prettier-js-mode t)))
+            (biomejs-format-mode t)))
 (add-hook 'web-mode-hook
           (lambda ()
             (when (locate-dominating-file buffer-file-name "deno.json")
@@ -355,7 +357,7 @@
             (when (locate-dominating-file buffer-file-name "package.json")
               (company-mode t)
               (flycheck-mode t)
-              (prettier-js-mode t)
+              (biomejs-format-mode t)
               (when (member (file-name-extension buffer-file-name) '("html"))
                 (emmet-mode t))
               (when (member (file-name-extension buffer-file-name) '("js" "cjs" "mjs"))
