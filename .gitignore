@@ -20,3 +20,5 @@ projects
 
 # straight.el
 /straight
+.cache
+elpa
