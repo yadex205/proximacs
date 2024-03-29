@@ -274,7 +274,6 @@
 ;;; HTML/CSS/JavaScript/TypeScript
 
 (straight-use-package 'scss-mode)
-(straight-use-package 'tide)
 
 ;; Enable emmet
 (straight-use-package 'emmet-mode)
@@ -307,7 +306,6 @@
 (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
 (with-eval-after-load 'web-mode
   (set-face-foreground 'web-mode-html-tag-bracket-face monokai-foreground))
-
 
 ;; Integrate with Biome (biomejs-format)
 (straight-use-package
@@ -352,38 +350,12 @@
             (biomejs-format-mode t)))
 (add-hook 'web-mode-hook
           (lambda ()
-            (when (locate-dominating-file buffer-file-name "deno.json")
+            (when (member (file-name-extension buffer-file-name) '("html" "js" "cjs" "mjs" "ts" "jsx" "tsx"))
               (lsp-deferred))
-            (when (locate-dominating-file buffer-file-name "package.json")
-              (company-mode t)
-              (flycheck-mode t)
-              (biomejs-format-mode t)
-              (when (member (file-name-extension buffer-file-name) '("html"))
-                (emmet-mode t))
-              (when (member (file-name-extension buffer-file-name) '("js" "cjs" "mjs"))
-                (tide-setup)
-                (tide-hl-identifier-mode t)
-                (eldoc-mode t)
-                (define-key tide-mode-map (kbd "C-c C-j") 'tide-jump-to-definition)
-                (flycheck-add-mode 'javascript-eslint 'web-mode)
-                (flycheck-add-mode 'javascript-tide 'web-mode)
-                (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append))
-              (when (member (file-name-extension buffer-file-name) '("ts"))
-                (tide-setup)
-                (tide-hl-identifier-mode t)
-                (eldoc-mode t)
-                (define-key tide-mode-map (kbd "C-c C-j") 'tide-jump-to-definition)
-                (flycheck-add-mode 'javascript-eslint 'web-mode)
-                (flycheck-add-mode 'typescript-tide 'web-mode)
-                (flycheck-add-next-checker 'typescript-tide 'javascript-eslint 'append))
-              (when (member (file-name-extension buffer-file-name) '("tsx"))
-                (emmet-mode t)
-                (tide-setup)
-                (tide-hl-identifier-mode t)
-                (eldoc-mode t)
-                (define-key tide-mode-map (kbd "C-c C-j") 'tide-jump-to-definition)
-                (flycheck-add-mode 'javascript-eslint 'web-mode)
-                (flycheck-add-next-checker 'tsx-tide 'javascript-eslint 'append)))))
+            (when (member (file-name-extension buffer-file-name) '("js" "cjs" "mjs" "ts" "jsx" "tsx"))
+              (biomejs-format-mode))
+            (when (member (file-name-extension buffer-file-name) '("html" "jsx" "tsx"))
+              (emmet-mode t))))
 
 
 
@@ -520,6 +492,11 @@
           (lambda ()
             (define-key flycheck-mode-map (kbd "C-c ! l") 'consult-flycheck)))
 
+;;; lsp-mode
+(with-eval-after-load 'lsp-mode
+  (add-hook 'lsp-mode-hook
+            (global-set-key (kbd "C-c C-j") 'lsp-find-definition)))
+
 ;; Magit
 (global-set-key (kbd "C-c C-m C-S") 'magit-status)
 
@@ -535,6 +512,7 @@
 
 ;; web-mode
 (with-eval-after-load 'web-mode
+  (define-key web-mode-map (kbd "C-c C-j") nil)
   (define-key web-mode-map (kbd "C-c C-m") nil))
 
 ;; Consult
