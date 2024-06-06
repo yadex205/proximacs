@@ -461,6 +461,12 @@
 
 
 ;;
+;;; Terraform
+(straight-use-package 'terraform-mode)
+
+
+
+;;
 ;;; Unix style conf
 (add-hook 'conf-mode-hook
           (lambda ()
