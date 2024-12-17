@@ -278,7 +278,8 @@
 ;; Enable emmet
 (straight-use-package 'emmet-mode)
 (custom-set-variables
- '(emmet-identation 2)
+ '(emmet-indent-after-insert nil)
+ '(emmet-indentation 2)
  '(emmet-mode-cursor-between-quotes t)
  '(emmet-self-closing-tag-style " /"))
 
@@ -355,7 +356,9 @@
             (when (member (file-name-extension buffer-file-name) '("js" "cjs" "mjs" "ts" "jsx" "tsx"))
               (biomejs-format-mode))
             (when (member (file-name-extension buffer-file-name) '("html" "jsx" "tsx"))
-              (emmet-mode t))))
+              (emmet-mode t))
+            (when (member (file-name-extension buffer-file-name) '("jsx" "tsx"))
+              (add-to-list 'emmet-jsx-major-modes 'web-mode))))
 
 
 
