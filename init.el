@@ -533,6 +533,11 @@
   (define-key web-mode-map (kbd "C-c C-j") nil)
   (define-key web-mode-map (kbd "C-c C-m") nil))
 
+;; astro-ts-mode
+(with-eval-after-load 'astro-ts-mode
+  (define-key astro-ts-mode-map (kbd "C-c C-j") nil)
+  (define-key astro-ts-mode-map (kbd "C-c C-m") nil))
+
 ;; Consult
 (global-set-key (kbd "C-c s") 'consult-ag)
 (global-set-key (kbd "C-c p f") 'consult-ls-git)
