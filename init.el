@@ -308,6 +308,15 @@
 (with-eval-after-load 'web-mode
   (set-face-foreground 'web-mode-html-tag-bracket-face monokai-foreground))
 
+;; Enable astro-ts-mode
+(straight-use-package 'astro-ts-mode)
+(setq treesit-language-source-alist
+      '((astro "https://github.com/virchau13/tree-sitter-astro")
+        (css "https://github.com/tree-sitter/tree-sitter-css")
+        (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")))
+(add-to-list 'auto-mode-alist '("\\.astro$" . astro-ts-mode))
+
 ;; Integrate with Biome (biomejs-format)
 (straight-use-package
  '(biomejs-format :type git :host github :repo "yadex205/emacs-biomejs-format"))

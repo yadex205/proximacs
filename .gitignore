@@ -22,3 +22,6 @@ projects
 /straight
 .cache
 elpa
+
+# Tree-sitter
+/tree-sitter
