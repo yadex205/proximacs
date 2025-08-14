@@ -7,6 +7,7 @@ auto-save-list
 eshell
 places
 recentf
+tramp
 
 # Irony
 /irony
@@ -25,3 +26,6 @@ elpa
 
 # Tree-sitter
 /tree-sitter
+
+# ellama
+ellama-sessions

@@ -212,6 +212,19 @@
 
 
 ;;
+;;; AI/LLM
+(straight-use-package 'llm)
+(straight-use-package 'ellama)
+(require 'llm-openai)
+(custom-set-variables
+ '(llm-warn-on-nonfree nil)
+ '(ellama-provider
+   (make-llm-openai-compatible
+    :url (concat "http://localhost:" (getenv "LLAMA_ARG_PORT")))))
+
+
+
+;;
 ;;; C/C++/C#/Obj-C
 
 (straight-use-package 'irony)
@@ -498,6 +511,7 @@
 
 (global-set-key (kbd "C-x p") (lambda () (interactive) (other-window -1)))
 (global-set-key (kbd "C-x TAB") 'indent-region)
+(global-set-key (kbd "C-c C-e") 'ellama)
 
 ;; mwim
 (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
