@@ -90,7 +90,8 @@
 
 (custom-set-variables
  '(indent-tabs-mode nil)
- '(tab-width 2))
+ '(tab-width 2)
+ '(fill-column 240)) ; Expand max length for ellama + org-mode.
 
 ;; Avoid opening image files by "display-buffer" on CLI environment
 (defun advice-display-buffer-cli-filter (original-display-buffer-function buffer-or-name &optional action frame)
